@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="js/vendor/codemirror/lib/codemirror.css?v=5.1.3">
     <link rel="stylesheet" type="text/css" href="js/vendor/codemirror/addon/hint/show-hint.css?v=5.1.3">
     <link rel="stylesheet" type="text/css" href="js/vendor/codemirror/addon/lint/lint.css?v=5.1.3">
-    <link rel="stylesheet" type="text/css" href="./themes/pmahomme/css/theme.css?v=5.1.3&nocache=2989074683ltr&server=1">
+    <link rel="stylesheet" type="text/css" href="./themes/pmahomme/css/theme.css?v=5.1.3&nocache=624753367ltr&server=1">
     <link rel="stylesheet" type="text/css" href="./themes/pmahomme/css/printview.css?v=5.1.3" media="print" id="printcss">
     <title>localhost / localhost | phpMyAdmin 5.1.3</title>
     <script data-cfasync="false" type="text/javascript" src="js/vendor/jquery/jquery.min.js?v=5.1.3"></script>
@@ -260,7 +260,7 @@ $(function() {
       </div>
       <div id="pma_navigation_tree" class="list_container synced highlight autoexpand">
 
-  <div class="pma_quick_warp"><div class="drop_list"><button title="Recent tables" class="drop_button btn">Recent</button><ul id="pma_recent_list"><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=products&table=protucts">`products`.`protucts`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=my_blog&table=posts">`my_blog`.`posts`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=my_blog&table=categories">`my_blog`.`categories`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=pdoposts&table=posts">`pdoposts`.`posts`</a></li></ul></div><div class="drop_list"><button title="Favorite tables" class="drop_button btn">Favorites</button><ul id="pma_favorite_list"><li class="warp_link">There are no favorite tables.</li></ul></div><div class="clearfloat"></div></div>
+  <div class="pma_quick_warp"><div class="drop_list"><button title="Recent tables" class="drop_button btn">Recent</button><ul id="pma_recent_list"><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=products&table=product_properties">`products`.`product_properties`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=products&table=type_properties">`products`.`type_properties`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=products&table=products">`products`.`products`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=products&table=product_types">`products`.`product_types`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=products&table=protucts">`products`.`protucts`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=my_blog&table=posts">`my_blog`.`posts`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=my_blog&table=categories">`my_blog`.`categories`</a></li><li class="warp_link"><a href="index.php?route=/table/recent-favorite&db=pdoposts&table=posts">`pdoposts`.`posts`</a></li></ul></div><div class="drop_list"><button title="Favorite tables" class="drop_button btn">Favorites</button><ul id="pma_favorite_list"><li class="warp_link">There are no favorite tables.</li></ul></div><div class="clearfloat"></div></div>
 
 <div class="clearfloat"></div>
 
@@ -562,7 +562,7 @@ $.extend(defaultValues, {
                         Press Enter to execute query                    </span>
                 </div>
                                                             <div class="message history collapsed hide select"
-                            targetdb="products" targettable="protucts">
+                            targetdb="products" targettable="products">
                             <div class="action_content">
                     <span class="action collapse">
             Collapse
@@ -597,390 +597,10 @@ $.extend(defaultValues, {
                             : <span>During current session</span>
                     </span>
             </div>
-                            <span class="query">SELECT * FROM `protucts`</span>
-                        </div>
-                                            <div class="message history collapsed hide select"
-                            targetdb="products" targettable="protucts">
-                            <div class="action_content">
-                    <span class="action collapse">
-            Collapse
-                    </span>
-                            <span class="action expand">
-            Expand
-                    </span>
-                            <span class="action requery">
-            Requery
-                    </span>
-                            <span class="action edit">
-            Edit
-                    </span>
-                            <span class="action explain">
-            Explain
-                    </span>
-                            <span class="action profiling">
-            Profiling
-                    </span>
-                            <span class="action bookmark">
-            Bookmark
-                    </span>
-                            <span class="text failed">
-            Query failed
-                    </span>
-                            <span class="text targetdb">
-            Database
-                            : <span>products</span>
-                    </span>
-                            <span class="text query_time">
-            Queried time
-                            : <span>During current session</span>
-                    </span>
-            </div>
-                            <span class="query">SELECT * FROM `protucts`</span>
-                        </div>
-                                            <div class="message history collapsed hide select"
-                            targetdb="products" targettable="protucts">
-                            <div class="action_content">
-                    <span class="action collapse">
-            Collapse
-                    </span>
-                            <span class="action expand">
-            Expand
-                    </span>
-                            <span class="action requery">
-            Requery
-                    </span>
-                            <span class="action edit">
-            Edit
-                    </span>
-                            <span class="action explain">
-            Explain
-                    </span>
-                            <span class="action profiling">
-            Profiling
-                    </span>
-                            <span class="action bookmark">
-            Bookmark
-                    </span>
-                            <span class="text failed">
-            Query failed
-                    </span>
-                            <span class="text targetdb">
-            Database
-                            : <span>products</span>
-                    </span>
-                            <span class="text query_time">
-            Queried time
-                            : <span>During current session</span>
-                    </span>
-            </div>
-                            <span class="query">SELECT * FROM `protucts`</span>
-                        </div>
-                                            <div class="message history collapsed hide select"
-                            targetdb="products" targettable="protucts">
-                            <div class="action_content">
-                    <span class="action collapse">
-            Collapse
-                    </span>
-                            <span class="action expand">
-            Expand
-                    </span>
-                            <span class="action requery">
-            Requery
-                    </span>
-                            <span class="action edit">
-            Edit
-                    </span>
-                            <span class="action explain">
-            Explain
-                    </span>
-                            <span class="action profiling">
-            Profiling
-                    </span>
-                            <span class="action bookmark">
-            Bookmark
-                    </span>
-                            <span class="text failed">
-            Query failed
-                    </span>
-                            <span class="text targetdb">
-            Database
-                            : <span>products</span>
-                    </span>
-                            <span class="text query_time">
-            Queried time
-                            : <span>During current session</span>
-                    </span>
-            </div>
-                            <span class="query">SELECT * FROM `protucts`</span>
-                        </div>
-                                            <div class="message history collapsed hide select"
-                            targetdb="products" targettable="protucts">
-                            <div class="action_content">
-                    <span class="action collapse">
-            Collapse
-                    </span>
-                            <span class="action expand">
-            Expand
-                    </span>
-                            <span class="action requery">
-            Requery
-                    </span>
-                            <span class="action edit">
-            Edit
-                    </span>
-                            <span class="action explain">
-            Explain
-                    </span>
-                            <span class="action profiling">
-            Profiling
-                    </span>
-                            <span class="action bookmark">
-            Bookmark
-                    </span>
-                            <span class="text failed">
-            Query failed
-                    </span>
-                            <span class="text targetdb">
-            Database
-                            : <span>products</span>
-                    </span>
-                            <span class="text query_time">
-            Queried time
-                            : <span>During current session</span>
-                    </span>
-            </div>
-                            <span class="query">SELECT * FROM `protucts`</span>
-                        </div>
-                                            <div class="message history collapsed hide select"
-                            targetdb="products" targettable="protucts">
-                            <div class="action_content">
-                    <span class="action collapse">
-            Collapse
-                    </span>
-                            <span class="action expand">
-            Expand
-                    </span>
-                            <span class="action requery">
-            Requery
-                    </span>
-                            <span class="action edit">
-            Edit
-                    </span>
-                            <span class="action explain">
-            Explain
-                    </span>
-                            <span class="action profiling">
-            Profiling
-                    </span>
-                            <span class="action bookmark">
-            Bookmark
-                    </span>
-                            <span class="text failed">
-            Query failed
-                    </span>
-                            <span class="text targetdb">
-            Database
-                            : <span>products</span>
-                    </span>
-                            <span class="text query_time">
-            Queried time
-                            : <span>During current session</span>
-                    </span>
-            </div>
-                            <span class="query">SELECT * FROM `protucts`</span>
-                        </div>
-                                            <div class="message history collapsed hide select"
-                            targetdb="products" targettable="protucts">
-                            <div class="action_content">
-                    <span class="action collapse">
-            Collapse
-                    </span>
-                            <span class="action expand">
-            Expand
-                    </span>
-                            <span class="action requery">
-            Requery
-                    </span>
-                            <span class="action edit">
-            Edit
-                    </span>
-                            <span class="action explain">
-            Explain
-                    </span>
-                            <span class="action profiling">
-            Profiling
-                    </span>
-                            <span class="action bookmark">
-            Bookmark
-                    </span>
-                            <span class="text failed">
-            Query failed
-                    </span>
-                            <span class="text targetdb">
-            Database
-                            : <span>products</span>
-                    </span>
-                            <span class="text query_time">
-            Queried time
-                            : <span>During current session</span>
-                    </span>
-            </div>
-                            <span class="query">SELECT * FROM `protucts`</span>
-                        </div>
-                                            <div class="message history collapsed hide select"
-                            targetdb="products" targettable="protucts">
-                            <div class="action_content">
-                    <span class="action collapse">
-            Collapse
-                    </span>
-                            <span class="action expand">
-            Expand
-                    </span>
-                            <span class="action requery">
-            Requery
-                    </span>
-                            <span class="action edit">
-            Edit
-                    </span>
-                            <span class="action explain">
-            Explain
-                    </span>
-                            <span class="action profiling">
-            Profiling
-                    </span>
-                            <span class="action bookmark">
-            Bookmark
-                    </span>
-                            <span class="text failed">
-            Query failed
-                    </span>
-                            <span class="text targetdb">
-            Database
-                            : <span>products</span>
-                    </span>
-                            <span class="text query_time">
-            Queried time
-                            : <span>During current session</span>
-                    </span>
-            </div>
-                            <span class="query">SELECT * FROM `protucts`</span>
-                        </div>
-                                            <div class="message history collapsed hide select"
-                            targetdb="products" targettable="protucts">
-                            <div class="action_content">
-                    <span class="action collapse">
-            Collapse
-                    </span>
-                            <span class="action expand">
-            Expand
-                    </span>
-                            <span class="action requery">
-            Requery
-                    </span>
-                            <span class="action edit">
-            Edit
-                    </span>
-                            <span class="action explain">
-            Explain
-                    </span>
-                            <span class="action profiling">
-            Profiling
-                    </span>
-                            <span class="action bookmark">
-            Bookmark
-                    </span>
-                            <span class="text failed">
-            Query failed
-                    </span>
-                            <span class="text targetdb">
-            Database
-                            : <span>products</span>
-                    </span>
-                            <span class="text query_time">
-            Queried time
-                            : <span>During current session</span>
-                    </span>
-            </div>
-                            <span class="query">SELECT * FROM `protucts`</span>
-                        </div>
-                                            <div class="message history collapsed hide select"
-                            targetdb="products" targettable="protucts">
-                            <div class="action_content">
-                    <span class="action collapse">
-            Collapse
-                    </span>
-                            <span class="action expand">
-            Expand
-                    </span>
-                            <span class="action requery">
-            Requery
-                    </span>
-                            <span class="action edit">
-            Edit
-                    </span>
-                            <span class="action explain">
-            Explain
-                    </span>
-                            <span class="action profiling">
-            Profiling
-                    </span>
-                            <span class="action bookmark">
-            Bookmark
-                    </span>
-                            <span class="text failed">
-            Query failed
-                    </span>
-                            <span class="text targetdb">
-            Database
-                            : <span>products</span>
-                    </span>
-                            <span class="text query_time">
-            Queried time
-                            : <span>During current session</span>
-                    </span>
-            </div>
-                            <span class="query">SELECT * FROM `protucts`</span>
-                        </div>
-                                            <div class="message history collapsed hide select"
-                            targetdb="products" targettable="protucts">
-                            <div class="action_content">
-                    <span class="action collapse">
-            Collapse
-                    </span>
-                            <span class="action expand">
-            Expand
-                    </span>
-                            <span class="action requery">
-            Requery
-                    </span>
-                            <span class="action edit">
-            Edit
-                    </span>
-                            <span class="action explain">
-            Explain
-                    </span>
-                            <span class="action profiling">
-            Profiling
-                    </span>
-                            <span class="action bookmark">
-            Bookmark
-                    </span>
-                            <span class="text failed">
-            Query failed
-                    </span>
-                            <span class="text targetdb">
-            Database
-                            : <span>products</span>
-                    </span>
-                            <span class="text query_time">
-            Queried time
-                            : <span>During current session</span>
-                    </span>
-            </div>
-                            <span class="query">SELECT * FROM `protucts`</span>
+                            <span class="query">SELECT * FROM `products`</span>
                         </div>
                                             <div class="message history collapsed hide"
-                            targetdb="products" targettable="protucts">
+                            targetdb="products" targettable="products">
                             <div class="action_content">
                     <span class="action collapse">
             Collapse
@@ -1015,10 +635,10 @@ $.extend(defaultValues, {
                             : <span>During current session</span>
                     </span>
             </div>
-                            <span class="query">INSERT INTO `protucts` (`id`, `SKU`, `name`, `price`, `type`, `properties`, `created_at`, `form`) VALUES (NULL, &#039;eddddddddddddd&#039;, &#039;eeeeeeeeeeeee&#039;, &#039;3333&#039;, &#039;BOOK&#039;, &#039;&#039;, current_timestamp(), &#039;5&#039;);</span>
+                            <span class="query">DELETE FROM `products` WHERE `products`.`id` = 46</span>
                         </div>
                                             <div class="message history collapsed hide select"
-                            targetdb="products" targettable="protucts">
+                            targetdb="products" targettable="products">
                             <div class="action_content">
                     <span class="action collapse">
             Collapse
@@ -1053,10 +673,10 @@ $.extend(defaultValues, {
                             : <span>During current session</span>
                     </span>
             </div>
-                            <span class="query">SELECT * FROM `protucts`</span>
+                            <span class="query">SELECT * FROM `products`</span>
                         </div>
                                             <div class="message history collapsed hide select"
-                            targetdb="products" targettable="protucts">
+                            targetdb="products" targettable="products">
                             <div class="action_content">
                     <span class="action collapse">
             Collapse
@@ -1091,10 +711,10 @@ $.extend(defaultValues, {
                             : <span>During current session</span>
                     </span>
             </div>
-                            <span class="query">SELECT * FROM `protucts`</span>
+                            <span class="query">SELECT * FROM `products`</span>
                         </div>
                                             <div class="message history collapsed hide select"
-                            targetdb="products" targettable="protucts">
+                            targetdb="products" targettable="product_properties">
                             <div class="action_content">
                     <span class="action collapse">
             Collapse
@@ -1129,10 +749,10 @@ $.extend(defaultValues, {
                             : <span>During current session</span>
                     </span>
             </div>
-                            <span class="query">SELECT * FROM `protucts`</span>
+                            <span class="query">SELECT * FROM `product_properties`</span>
                         </div>
                                             <div class="message history collapsed hide select"
-                            targetdb="products" targettable="protucts">
+                            targetdb="products" targettable="type_properties">
                             <div class="action_content">
                     <span class="action collapse">
             Collapse
@@ -1167,10 +787,10 @@ $.extend(defaultValues, {
                             : <span>During current session</span>
                     </span>
             </div>
-                            <span class="query">SELECT * FROM `protucts`</span>
+                            <span class="query">SELECT * FROM `type_properties`</span>
                         </div>
                                             <div class="message history collapsed hide select"
-                            targetdb="products" targettable="protucts">
+                            targetdb="products" targettable="product_types">
                             <div class="action_content">
                     <span class="action collapse">
             Collapse
@@ -1205,162 +825,10 @@ $.extend(defaultValues, {
                             : <span>During current session</span>
                     </span>
             </div>
-                            <span class="query">SELECT * FROM `protucts`</span>
-                        </div>
-                                            <div class="message history collapsed hide select"
-                            targetdb="products" targettable="protucts">
-                            <div class="action_content">
-                    <span class="action collapse">
-            Collapse
-                    </span>
-                            <span class="action expand">
-            Expand
-                    </span>
-                            <span class="action requery">
-            Requery
-                    </span>
-                            <span class="action edit">
-            Edit
-                    </span>
-                            <span class="action explain">
-            Explain
-                    </span>
-                            <span class="action profiling">
-            Profiling
-                    </span>
-                            <span class="action bookmark">
-            Bookmark
-                    </span>
-                            <span class="text failed">
-            Query failed
-                    </span>
-                            <span class="text targetdb">
-            Database
-                            : <span>products</span>
-                    </span>
-                            <span class="text query_time">
-            Queried time
-                            : <span>During current session</span>
-                    </span>
-            </div>
-                            <span class="query">SELECT * FROM `protucts`</span>
-                        </div>
-                                            <div class="message history collapsed hide select"
-                            targetdb="products" targettable="protucts">
-                            <div class="action_content">
-                    <span class="action collapse">
-            Collapse
-                    </span>
-                            <span class="action expand">
-            Expand
-                    </span>
-                            <span class="action requery">
-            Requery
-                    </span>
-                            <span class="action edit">
-            Edit
-                    </span>
-                            <span class="action explain">
-            Explain
-                    </span>
-                            <span class="action profiling">
-            Profiling
-                    </span>
-                            <span class="action bookmark">
-            Bookmark
-                    </span>
-                            <span class="text failed">
-            Query failed
-                    </span>
-                            <span class="text targetdb">
-            Database
-                            : <span>products</span>
-                    </span>
-                            <span class="text query_time">
-            Queried time
-                            : <span>During current session</span>
-                    </span>
-            </div>
-                            <span class="query">SELECT * FROM `protucts`</span>
-                        </div>
-                                            <div class="message history collapsed hide select"
-                            targetdb="products" targettable="protucts">
-                            <div class="action_content">
-                    <span class="action collapse">
-            Collapse
-                    </span>
-                            <span class="action expand">
-            Expand
-                    </span>
-                            <span class="action requery">
-            Requery
-                    </span>
-                            <span class="action edit">
-            Edit
-                    </span>
-                            <span class="action explain">
-            Explain
-                    </span>
-                            <span class="action profiling">
-            Profiling
-                    </span>
-                            <span class="action bookmark">
-            Bookmark
-                    </span>
-                            <span class="text failed">
-            Query failed
-                    </span>
-                            <span class="text targetdb">
-            Database
-                            : <span>products</span>
-                    </span>
-                            <span class="text query_time">
-            Queried time
-                            : <span>During current session</span>
-                    </span>
-            </div>
-                            <span class="query">SELECT * FROM `protucts`</span>
-                        </div>
-                                            <div class="message history collapsed hide select"
-                            targetdb="products" targettable="protucts">
-                            <div class="action_content">
-                    <span class="action collapse">
-            Collapse
-                    </span>
-                            <span class="action expand">
-            Expand
-                    </span>
-                            <span class="action requery">
-            Requery
-                    </span>
-                            <span class="action edit">
-            Edit
-                    </span>
-                            <span class="action explain">
-            Explain
-                    </span>
-                            <span class="action profiling">
-            Profiling
-                    </span>
-                            <span class="action bookmark">
-            Bookmark
-                    </span>
-                            <span class="text failed">
-            Query failed
-                    </span>
-                            <span class="text targetdb">
-            Database
-                            : <span>products</span>
-                    </span>
-                            <span class="text query_time">
-            Queried time
-                            : <span>During current session</span>
-                    </span>
-            </div>
-                            <span class="query">SELECT * FROM `protucts`</span>
+                            <span class="query">SELECT * FROM `product_types`</span>
                         </div>
                                             <div class="message history collapsed hide"
-                            targetdb="products" targettable="protucts">
+                            targetdb="products" targettable="products">
                             <div class="action_content">
                     <span class="action collapse">
             Collapse
@@ -1395,10 +863,86 @@ $.extend(defaultValues, {
                             : <span>During current session</span>
                     </span>
             </div>
-                            <span class="query">INSERT INTO protucts SET SKU = &#039;asdf&#039; , name = &#039;fsdf&#039; , price = &#039;234&#039; , type = &quot;DVD&quot; , properties = &quot;sfddf&quot; , form = &quot;234&quot;;</span>
+                            <span class="query">DELETE FROM `products` WHERE `products`.`id` = 1</span>
+                        </div>
+                                            <div class="message history collapsed hide"
+                            targetdb="products" targettable="product_properties">
+                            <div class="action_content">
+                    <span class="action collapse">
+            Collapse
+                    </span>
+                            <span class="action expand">
+            Expand
+                    </span>
+                            <span class="action requery">
+            Requery
+                    </span>
+                            <span class="action edit">
+            Edit
+                    </span>
+                            <span class="action explain">
+            Explain
+                    </span>
+                            <span class="action profiling">
+            Profiling
+                    </span>
+                            <span class="action bookmark">
+            Bookmark
+                    </span>
+                            <span class="text failed">
+            Query failed
+                    </span>
+                            <span class="text targetdb">
+            Database
+                            : <span>products</span>
+                    </span>
+                            <span class="text query_time">
+            Queried time
+                            : <span>During current session</span>
+                    </span>
+            </div>
+                            <span class="query">DELETE FROM `product_properties` WHERE `product_properties`.`id` = 7</span>
+                        </div>
+                                            <div class="message history collapsed hide"
+                            targetdb="products" targettable="product_properties">
+                            <div class="action_content">
+                    <span class="action collapse">
+            Collapse
+                    </span>
+                            <span class="action expand">
+            Expand
+                    </span>
+                            <span class="action requery">
+            Requery
+                    </span>
+                            <span class="action edit">
+            Edit
+                    </span>
+                            <span class="action explain">
+            Explain
+                    </span>
+                            <span class="action profiling">
+            Profiling
+                    </span>
+                            <span class="action bookmark">
+            Bookmark
+                    </span>
+                            <span class="text failed">
+            Query failed
+                    </span>
+                            <span class="text targetdb">
+            Database
+                            : <span>products</span>
+                    </span>
+                            <span class="text query_time">
+            Queried time
+                            : <span>During current session</span>
+                    </span>
+            </div>
+                            <span class="query">ALTER TABLE `product_properties` ADD INDEX(`property_id`);</span>
                         </div>
                                             <div class="message history collapsed hide select"
-                            targetdb="products" targettable="protucts">
+                            targetdb="products" targettable="type_properties">
                             <div class="action_content">
                     <span class="action collapse">
             Collapse
@@ -1433,10 +977,10 @@ $.extend(defaultValues, {
                             : <span>During current session</span>
                     </span>
             </div>
-                            <span class="query">SELECT * FROM `protucts`</span>
+                            <span class="query">SELECT * FROM `type_properties`</span>
                         </div>
                                             <div class="message history collapsed hide select"
-                            targetdb="products" targettable="protucts">
+                            targetdb="products" targettable="product_properties">
                             <div class="action_content">
                     <span class="action collapse">
             Collapse
@@ -1471,10 +1015,10 @@ $.extend(defaultValues, {
                             : <span>During current session</span>
                     </span>
             </div>
-                            <span class="query">SELECT * FROM `protucts`</span>
+                            <span class="query">SELECT * FROM `product_properties`</span>
                         </div>
                                             <div class="message history collapsed hide select"
-                            targetdb="products" targettable="protucts">
+                            targetdb="products" targettable="product_properties">
                             <div class="action_content">
                     <span class="action collapse">
             Collapse
@@ -1509,7 +1053,463 @@ $.extend(defaultValues, {
                             : <span>During current session</span>
                     </span>
             </div>
-                            <span class="query">SELECT * FROM `protucts`</span>
+                            <span class="query">SELECT * FROM `product_properties`</span>
+                        </div>
+                                            <div class="message history collapsed hide select"
+                            targetdb="products" targettable="products">
+                            <div class="action_content">
+                    <span class="action collapse">
+            Collapse
+                    </span>
+                            <span class="action expand">
+            Expand
+                    </span>
+                            <span class="action requery">
+            Requery
+                    </span>
+                            <span class="action edit">
+            Edit
+                    </span>
+                            <span class="action explain">
+            Explain
+                    </span>
+                            <span class="action profiling">
+            Profiling
+                    </span>
+                            <span class="action bookmark">
+            Bookmark
+                    </span>
+                            <span class="text failed">
+            Query failed
+                    </span>
+                            <span class="text targetdb">
+            Database
+                            : <span>products</span>
+                    </span>
+                            <span class="text query_time">
+            Queried time
+                            : <span>During current session</span>
+                    </span>
+            </div>
+                            <span class="query">SELECT * FROM `products`</span>
+                        </div>
+                                            <div class="message history collapsed hide select"
+                            targetdb="products" targettable="products">
+                            <div class="action_content">
+                    <span class="action collapse">
+            Collapse
+                    </span>
+                            <span class="action expand">
+            Expand
+                    </span>
+                            <span class="action requery">
+            Requery
+                    </span>
+                            <span class="action edit">
+            Edit
+                    </span>
+                            <span class="action explain">
+            Explain
+                    </span>
+                            <span class="action profiling">
+            Profiling
+                    </span>
+                            <span class="action bookmark">
+            Bookmark
+                    </span>
+                            <span class="text failed">
+            Query failed
+                    </span>
+                            <span class="text targetdb">
+            Database
+                            : <span>products</span>
+                    </span>
+                            <span class="text query_time">
+            Queried time
+                            : <span>During current session</span>
+                    </span>
+            </div>
+                            <span class="query">SELECT * FROM `products`</span>
+                        </div>
+                                            <div class="message history collapsed hide select"
+                            targetdb="products" targettable="product_properties">
+                            <div class="action_content">
+                    <span class="action collapse">
+            Collapse
+                    </span>
+                            <span class="action expand">
+            Expand
+                    </span>
+                            <span class="action requery">
+            Requery
+                    </span>
+                            <span class="action edit">
+            Edit
+                    </span>
+                            <span class="action explain">
+            Explain
+                    </span>
+                            <span class="action profiling">
+            Profiling
+                    </span>
+                            <span class="action bookmark">
+            Bookmark
+                    </span>
+                            <span class="text failed">
+            Query failed
+                    </span>
+                            <span class="text targetdb">
+            Database
+                            : <span>products</span>
+                    </span>
+                            <span class="text query_time">
+            Queried time
+                            : <span>During current session</span>
+                    </span>
+            </div>
+                            <span class="query">SELECT * FROM `product_properties`</span>
+                        </div>
+                                            <div class="message history collapsed hide select"
+                            targetdb="products" targettable="product_properties">
+                            <div class="action_content">
+                    <span class="action collapse">
+            Collapse
+                    </span>
+                            <span class="action expand">
+            Expand
+                    </span>
+                            <span class="action requery">
+            Requery
+                    </span>
+                            <span class="action edit">
+            Edit
+                    </span>
+                            <span class="action explain">
+            Explain
+                    </span>
+                            <span class="action profiling">
+            Profiling
+                    </span>
+                            <span class="action bookmark">
+            Bookmark
+                    </span>
+                            <span class="text failed">
+            Query failed
+                    </span>
+                            <span class="text targetdb">
+            Database
+                            : <span>products</span>
+                    </span>
+                            <span class="text query_time">
+            Queried time
+                            : <span>During current session</span>
+                    </span>
+            </div>
+                            <span class="query">SELECT * FROM `product_properties`</span>
+                        </div>
+                                            <div class="message history collapsed hide select"
+                            targetdb="products" targettable="type_properties">
+                            <div class="action_content">
+                    <span class="action collapse">
+            Collapse
+                    </span>
+                            <span class="action expand">
+            Expand
+                    </span>
+                            <span class="action requery">
+            Requery
+                    </span>
+                            <span class="action edit">
+            Edit
+                    </span>
+                            <span class="action explain">
+            Explain
+                    </span>
+                            <span class="action profiling">
+            Profiling
+                    </span>
+                            <span class="action bookmark">
+            Bookmark
+                    </span>
+                            <span class="text failed">
+            Query failed
+                    </span>
+                            <span class="text targetdb">
+            Database
+                            : <span>products</span>
+                    </span>
+                            <span class="text query_time">
+            Queried time
+                            : <span>During current session</span>
+                    </span>
+            </div>
+                            <span class="query">SELECT * FROM `type_properties`</span>
+                        </div>
+                                            <div class="message history collapsed hide select"
+                            targetdb="products" targettable="product_types">
+                            <div class="action_content">
+                    <span class="action collapse">
+            Collapse
+                    </span>
+                            <span class="action expand">
+            Expand
+                    </span>
+                            <span class="action requery">
+            Requery
+                    </span>
+                            <span class="action edit">
+            Edit
+                    </span>
+                            <span class="action explain">
+            Explain
+                    </span>
+                            <span class="action profiling">
+            Profiling
+                    </span>
+                            <span class="action bookmark">
+            Bookmark
+                    </span>
+                            <span class="text failed">
+            Query failed
+                    </span>
+                            <span class="text targetdb">
+            Database
+                            : <span>products</span>
+                    </span>
+                            <span class="text query_time">
+            Queried time
+                            : <span>During current session</span>
+                    </span>
+            </div>
+                            <span class="query">SELECT * FROM `product_types`</span>
+                        </div>
+                                            <div class="message history collapsed hide select"
+                            targetdb="products" targettable="product_properties">
+                            <div class="action_content">
+                    <span class="action collapse">
+            Collapse
+                    </span>
+                            <span class="action expand">
+            Expand
+                    </span>
+                            <span class="action requery">
+            Requery
+                    </span>
+                            <span class="action edit">
+            Edit
+                    </span>
+                            <span class="action explain">
+            Explain
+                    </span>
+                            <span class="action profiling">
+            Profiling
+                    </span>
+                            <span class="action bookmark">
+            Bookmark
+                    </span>
+                            <span class="text failed">
+            Query failed
+                    </span>
+                            <span class="text targetdb">
+            Database
+                            : <span>products</span>
+                    </span>
+                            <span class="text query_time">
+            Queried time
+                            : <span>During current session</span>
+                    </span>
+            </div>
+                            <span class="query">SELECT * FROM `product_properties`</span>
+                        </div>
+                                            <div class="message history collapsed hide select"
+                            targetdb="products" targettable="products">
+                            <div class="action_content">
+                    <span class="action collapse">
+            Collapse
+                    </span>
+                            <span class="action expand">
+            Expand
+                    </span>
+                            <span class="action requery">
+            Requery
+                    </span>
+                            <span class="action edit">
+            Edit
+                    </span>
+                            <span class="action explain">
+            Explain
+                    </span>
+                            <span class="action profiling">
+            Profiling
+                    </span>
+                            <span class="action bookmark">
+            Bookmark
+                    </span>
+                            <span class="text failed">
+            Query failed
+                    </span>
+                            <span class="text targetdb">
+            Database
+                            : <span>products</span>
+                    </span>
+                            <span class="text query_time">
+            Queried time
+                            : <span>During current session</span>
+                    </span>
+            </div>
+                            <span class="query">SELECT * FROM `products`</span>
+                        </div>
+                                            <div class="message history collapsed hide select"
+                            targetdb="products" targettable="type_properties">
+                            <div class="action_content">
+                    <span class="action collapse">
+            Collapse
+                    </span>
+                            <span class="action expand">
+            Expand
+                    </span>
+                            <span class="action requery">
+            Requery
+                    </span>
+                            <span class="action edit">
+            Edit
+                    </span>
+                            <span class="action explain">
+            Explain
+                    </span>
+                            <span class="action profiling">
+            Profiling
+                    </span>
+                            <span class="action bookmark">
+            Bookmark
+                    </span>
+                            <span class="text failed">
+            Query failed
+                    </span>
+                            <span class="text targetdb">
+            Database
+                            : <span>products</span>
+                    </span>
+                            <span class="text query_time">
+            Queried time
+                            : <span>During current session</span>
+                    </span>
+            </div>
+                            <span class="query">SELECT * FROM `type_properties`</span>
+                        </div>
+                                            <div class="message history collapsed hide select"
+                            targetdb="products" targettable="type_properties">
+                            <div class="action_content">
+                    <span class="action collapse">
+            Collapse
+                    </span>
+                            <span class="action expand">
+            Expand
+                    </span>
+                            <span class="action requery">
+            Requery
+                    </span>
+                            <span class="action edit">
+            Edit
+                    </span>
+                            <span class="action explain">
+            Explain
+                    </span>
+                            <span class="action profiling">
+            Profiling
+                    </span>
+                            <span class="action bookmark">
+            Bookmark
+                    </span>
+                            <span class="text failed">
+            Query failed
+                    </span>
+                            <span class="text targetdb">
+            Database
+                            : <span>products</span>
+                    </span>
+                            <span class="text query_time">
+            Queried time
+                            : <span>During current session</span>
+                    </span>
+            </div>
+                            <span class="query">SELECT * FROM `type_properties`</span>
+                        </div>
+                                            <div class="message history collapsed hide select"
+                            targetdb="products" targettable="product_properties">
+                            <div class="action_content">
+                    <span class="action collapse">
+            Collapse
+                    </span>
+                            <span class="action expand">
+            Expand
+                    </span>
+                            <span class="action requery">
+            Requery
+                    </span>
+                            <span class="action edit">
+            Edit
+                    </span>
+                            <span class="action explain">
+            Explain
+                    </span>
+                            <span class="action profiling">
+            Profiling
+                    </span>
+                            <span class="action bookmark">
+            Bookmark
+                    </span>
+                            <span class="text failed">
+            Query failed
+                    </span>
+                            <span class="text targetdb">
+            Database
+                            : <span>products</span>
+                    </span>
+                            <span class="text query_time">
+            Queried time
+                            : <span>During current session</span>
+                    </span>
+            </div>
+                            <span class="query">SELECT * FROM `product_properties`</span>
+                        </div>
+                                            <div class="message history collapsed hide select"
+                            targetdb="products" targettable="product_properties">
+                            <div class="action_content">
+                    <span class="action collapse">
+            Collapse
+                    </span>
+                            <span class="action expand">
+            Expand
+                    </span>
+                            <span class="action requery">
+            Requery
+                    </span>
+                            <span class="action edit">
+            Edit
+                    </span>
+                            <span class="action explain">
+            Explain
+                    </span>
+                            <span class="action profiling">
+            Profiling
+                    </span>
+                            <span class="action bookmark">
+            Bookmark
+                    </span>
+                            <span class="text failed">
+            Query failed
+                    </span>
+                            <span class="text targetdb">
+            Database
+                            : <span>products</span>
+                    </span>
+                            <span class="text query_time">
+            Queried time
+                            : <span>During current session</span>
+                    </span>
+            </div>
+                            <span class="query">SELECT * FROM `product_properties`</span>
                         </div>
                                                 </div><!-- console_message_container -->
             <div class="query_input">
