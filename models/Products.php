@@ -30,6 +30,9 @@ class Products
         $products_json = json_decode(response((new ProductModel('protucts'))->show_all()));
         for ($i = 0; $i < count(($products_json)); $i++) {
             $product_properties = (self::get_property_info(((array)$products_json[$i])['id']));
+            $products_json[$i]->properties = $product_properties;
+
+//            echo "asdfads f fasdf    " . json_encode($product_properties);
             $products_json[$i]->type = $products_json[$i]->properties[0]['type'];
         }
 
@@ -42,6 +45,7 @@ class Products
     {
         return (new ProductPropertyModel('product_properties'))->get_product_properties($sku);
     }
+
 
     public static function get_type_properties($id)
     {
@@ -143,10 +147,18 @@ class Products
         (new ProductModel('products'))->add_product($newProductArr, $data->productProperties);
     }
 
+//    public static function delete_products(array $data)
+//    {
+//        (new ProductModel('protucts'))->delete_products($data);
+//        return response(array('status' => 'success', 'message' => 'Deleted ' . count($data)));
+//    }
+
+
     public static function delete_products(array $data)
     {
-        (new ProductModel('protucts'))->delete_products($data);
-        return response(array('status' => 'success', 'message' => 'Deleted ' . count($data)));
+        $data = json_decode(file_get_contents("php://input"));
+
+        return (new ProductModel('protucts'))->delete_products($data->products);
     }
 
 

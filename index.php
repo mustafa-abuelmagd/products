@@ -16,9 +16,14 @@ $router->get('/getProduct', Products::class . '::get_product');
 $router->post('/addProduct', Products::class . '::add_new_product');
 
 
-$router->delete('/deleteProduct', function () {
-    require_once DirName . '/api/posts/delete_product.php';
-});
+
+
+$router->delete('/deleteProducts', Products::class . '::delete_products');
+
+//
+//$router->delete('/deleteProduct', function () {
+//    require_once DirName . '/api/posts/delete_product.php';
+//});
 
 $router->get('/getAllProductTypes', Products::class . '::get_all_product_types');
 

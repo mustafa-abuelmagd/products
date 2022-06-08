@@ -77,7 +77,7 @@ class ProductModel extends QueryBuilder
     {
         foreach ($data as $product) {
             echo strval($product);
-            $this->delete('products', 'id', $product);
+            $this->delete('products', 'sku', $product);
         }
     }
 
