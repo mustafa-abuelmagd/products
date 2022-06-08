@@ -1,0 +1,16 @@
+{
+    "name": "mustafa/products",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Mustafa\\Products\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "mustafaabuelmagd",
+            "email": "37253065+mustafa-abuelmagd@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}

@@ -1,0 +1,7 @@
+DirectoryIndex index.php
+RewriteEngine On
+
+RewriteBase /products/
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUE ST_FILENAME} !-f
+RewriteRule ^(.+)$ index.php/$1 [L,QSA]
