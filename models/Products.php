@@ -1,4 +1,6 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+//echo "llllllllererlelrlerlelrlerler";
 require_once __DIR__ . '/../models/ProductModel.php';
 require_once __DIR__ . '/../models/ProductTypeModel.php';
 require_once __DIR__ . '/../models/ProductPropertyModel.php';
@@ -7,6 +9,13 @@ require_once __DIR__ . '/../models/response.php';
 
 class Products
 {
+
+
+//    public static function index()
+//    {
+//        require_once __DIR__ . '/../src/frontend/index.html';
+//    }
+
 
     // BASIC REQUIRED OPERATIONS
 
@@ -187,7 +196,6 @@ class Products
             sendResponse(500, json_encode(["Status" => "Failed"]));
 
 
-
         }
     }
 
@@ -225,7 +233,7 @@ class Products
         try {
             $data = json_decode(file_get_contents("php://input"));
 
-            sendResponse(201, json_encode((new ProductTypeModel('product_types'))->add_product_type($data->type_name , $data->separator)));
+            sendResponse(201, json_encode((new ProductTypeModel('product_types'))->add_product_type($data->type_name, $data->separator)));
         } catch (mysqli_sql_exception $e) {
             sendResponse(500, json_encode(["Status" => "Failed"]));
         }

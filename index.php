@@ -1,12 +1,16 @@
 <?php
-
-require_once __DIR__ . '/../products/vendor/autoload.php';
+header("Access-Control-Allow-Origin: *");
 include_once './config/Router.php';
 require_once __DIR__ . '/models/Products.php';
 
 define('DirName', getcwd());
 
 $router = new Router();
+
+
+//$router->get('/', Products::class . '::index');
+//
+
 
 // BASIC REQUIRED OPERATIONS
 
