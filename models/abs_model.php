@@ -136,17 +136,19 @@ abstract class QueryBuilder
         return $this;
     }
 
-//    public function
-
 
     public function executeStmt()
     {
-//            echo $this->stmt->queryString;
-        if ($this->stmt->execute()) {
-            return true;
-        } else {
-
-            return false;
+        try {
+            if ($this->stmt->execute() ==1 ) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            $e->getMessage();
+            return \http\Exception::class;
         }
     }
 

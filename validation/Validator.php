@@ -34,9 +34,9 @@ class Validator
 
         if ($this->message == null) {
             $validate->add_product($this->inputs);
-            return response(array('stauts' => 'Success', 'message' => 'Product added successfully.'));
+            return sendResponse(array('stauts' => 'Success', 'message' => 'Product added successfully.'));
         } else {
-            return response(array('status' => 'Fail', 'message' => $this->message));
+            return sendResponse(array('status' => 'Fail', 'message' => $this->message));
         }
 
     }

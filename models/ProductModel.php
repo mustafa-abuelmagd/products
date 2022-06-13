@@ -24,90 +24,75 @@ class ProductModel extends QueryBuilder
 
     public function show_all()
     {
-        return $this->select(['*'], 'products')->bind()->fetchAll(PDO::FETCH_ASSOC);
+        try {
+            return $this->select(['*'], 'products')->bind()->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch (mysqli_sql_exception $e) {
+            throw new mysqli_sql_exception();
+
+        }
+
+
     }
-
-
-//    public function get_single_product(string $SKU)
-//    {
-//        $result = $this->select(['*'])->where('id', '=', $SKU)->limit([0, 1])->bind();
-//        $product = $result->fetch(PDO::FETCH_ASSOC);
-//
-//        $this->id = $product[':id'];
-//        $this->SKU = $product[':SKU'];
-//        $this->name = $product[':name'];
-//        $this->price = $product[':price'];
-//        $this->type = $product[':type'];
-//        $this->properties = $product[':properties'];
-//        $product_arr = array(
-//            'id' => $this->id,
-//            'name' => $this->name,
-//            'price' => $this->price,
-//            'type' => $this->type,
-//            'properties' => $this->properties,
-//        );
-//
-//        echo json_encode($product_arr);
-//        return $product;
-//    }
 
 
     public function find(string $SKU)
     {
-        $result = $this->select(['*'], 'products')->where('SKU', '=', $SKU)->limit([1])->bind();
-        if ($result == null) {
-            return null;
-        } else {
-            return $result->fetch(PDO::FETCH_ASSOC);
+        try {
+            $result = $this->select(['*'], 'products')->where('SKU', '=', $SKU)->limit([1])->bind();
+            if ($result == null) {
+                return null;
+            } else {
+                return $result->fetch(PDO::FETCH_ASSOC);
+            }
+        } catch (mysqli_sql_exception $e) {
+            throw new mysqli_sql_exception();
+
         }
     }
 
     public function add_product(array $data, array $productProperties)
     {
-        $adding_new_product_result = $this->insert('products')->prpareStmt()->bindParams($data)->executeStmt();
-        $added_product_id = $this->find($data[':SKU']);
-        for ($i = 0 ; $i < count($productProperties) ; $i++){
-            $productProperties[$i]->product_id = $added_product_id['id'];
+        try {
+            $adding_new_product_result = $this->insert('products')->prpareStmt()->bindParams($data)->executeStmt();
+            if ($adding_new_product_result == 1) {
+                $added_product_id = $this->find($data[':SKU']);
+                for ($i = 0; $i < count($productProperties); $i++) {
+                    $productProperties[$i]->product_id = $added_product_id['id'];
+                }
+                $adding_product_properties_result = (new ProductPropertyModel('product_properties'))->add_product_property($productProperties);
+                return $adding_new_product_result && $adding_product_properties_result;
+            } else {
+                throw new mysqli_sql_exception();
+            }
+        } catch (mysqli_sql_exception $e) {
+            throw new mysqli_sql_exception();
         }
-        $adding_product_properties_result = (new ProductPropertyModel('product_properties'))->add_product_property($productProperties);
-        return $adding_new_product_result && $adding_product_properties_result;
     }
 
     public function delete_products(array $data)
     {
-        foreach ($data as $product) {
-            echo strval($product);
-            $this->delete('products', 'sku', $product);
+        try {
+
+            foreach ($data as $product) {
+                if ($this->find($product) != null) {
+                    echo ($this->find($product) == null) . "  ";
+
+                    $this->delete('products', 'sku', $product);
+                    return true;
+
+                } else {
+                    return false;
+                }
+
+            }
+
+        } catch (mysqli_sql_exception $e) {
+            throw new mysqli_sql_exception();
+
         }
     }
 
-    public function validate_SKU()
-    {
-
-        return (!preg_match('/\s/', $this->inputs[':SKU']) && ($this->find(strval($this->inputs[':SKU'])) == null) && (strlen($this->inputs[':SKU'] > 0)));
-    }
-
-    public function validate_Name()
-    {
-        return (!preg_match('/\s/', $this->inputs[':name']) && (strlen($this->inputs[':name'] > 0)));
-    }
-
-    public function validate_Price()
-    {
-//        echo " \n   the issue might be here   " . filter_var($this->inputs[':price'], FILTER_VALIDATE_FLOAT) . (floatval($this->inputs[':price'] > 0)) ."   hhhhhhhhhh \n ";
-        return (filter_var($this->inputs[':price'], FILTER_VALIDATE_FLOAT) && (strlen($this->inputs[':price'] > 0)) && (floatval($this->inputs[':price'] > 0)));
-    }
-
-    public function validate_properties()
-    {
-        return (!preg_match('/\s/', $this->inputs[':properties']) && (strlen($this->inputs[':properties'] > 0)));
-    }
-
-
-    public function validate_type()
-    {
-        return (!preg_match('/\s/', $this->inputs[':type']) && (strlen($this->inputs[':type'] > 0)));
-    }
 
 
 }
