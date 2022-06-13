@@ -70,12 +70,12 @@ class ProductTypeModel extends QueryBuilder
         }
     }
 
-    public function add_product_type(string $data)
+    public function add_product_type(string $data , string $separator)
     {
         try {
 //            $adding_product_type_result =
             if (!($this->find_by_name($data)) != null) {
-                $this->general_insert('product_types')->prpareStmt()->bindParams2($data)->executeStmt();
+                echo $this->general_insert('product_types')->prpareStmt()->bindParams2($data, $separator)->executeStmt();
 
             } else {
                 throw new mysqli_sql_exception();

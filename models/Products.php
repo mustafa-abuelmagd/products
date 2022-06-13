@@ -3,7 +3,7 @@ require_once __DIR__ . '/../models/ProductModel.php';
 require_once __DIR__ . '/../models/ProductTypeModel.php';
 require_once __DIR__ . '/../models/ProductPropertyModel.php';
 require_once __DIR__ . '/../models/TypePropertiesModel.php';
-require_once __DIR__ . '/../validation/Validator.php';
+require_once __DIR__ . '/../models/response.php';
 
 class Products
 {
@@ -220,12 +220,12 @@ class Products
     }
 
 
-    public static function add_new_product_type(array $inputs): void
+    public static function add_new_product_type(): void
     {
         try {
             $data = json_decode(file_get_contents("php://input"));
 
-            sendResponse(201, json_encode((new ProductTypeModel('product_types'))->add_product_type($data->type_name)));
+            sendResponse(201, json_encode((new ProductTypeModel('product_types'))->add_product_type($data->type_name , $data->separator)));
         } catch (mysqli_sql_exception $e) {
             sendResponse(500, json_encode(["Status" => "Failed"]));
         }

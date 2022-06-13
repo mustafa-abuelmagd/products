@@ -54,7 +54,7 @@ abstract class QueryBuilder
 
     public function general_insert(string $in)
     {
-        $this->query = 'INSERT INTO ' . $in . ' SET type_name = :type_name ';
+        $this->query = 'INSERT INTO ' . $in . ' SET type_name = :type_name , `separator` = :separator ';
         return $this;
     }
 
@@ -112,9 +112,10 @@ abstract class QueryBuilder
     }
 
 
-    public function bindParams2($data)
+    public function bindParams2($data , $separator)
     {
         $this->stmt->bindValue(":type_name", $data);
+        $this->stmt->bindValue(":separator", $separator);
         return $this;
     }
 
@@ -140,15 +141,17 @@ abstract class QueryBuilder
     public function executeStmt()
     {
         try {
+
             if ($this->stmt->execute() ==1 ) {
                 return true;
             }
             else {
                 return false;
             }
-        } catch (PDOException $e) {
-            $e->getMessage();
-            return \http\Exception::class;
+        } catch (mysqli_sql_exception $e) {
+
+            throw new mysqli_sql_exception();
+
         }
     }
 
