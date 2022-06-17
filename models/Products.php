@@ -1,11 +1,10 @@
 <?php
-header("Access-Control-Allow-Origin: *");
-//echo "llllllllererlelrlerlelrlerler";
 require_once __DIR__ . '/../models/ProductModel.php';
 require_once __DIR__ . '/../models/ProductTypeModel.php';
 require_once __DIR__ . '/../models/ProductPropertyModel.php';
 require_once __DIR__ . '/../models/TypePropertiesModel.php';
 require_once __DIR__ . '/../models/response.php';
+require_once __DIR__ . '/../models/ServerLogger.php';
 
 class Products
 {
@@ -26,7 +25,10 @@ class Products
             for ($i = 0; $i < count(($products_json)); $i++) {
                 $products_json[$i]['properties'] = self::get_property_info($products_json[$i]['id']);
                 $products_json[$i]['type'] = $products_json[$i]['properties'][0]['type'];
+
             }
+
+
             sendResponse(200, json_encode($products_json));
         } catch (mysqli_sql_exception $e) {
             sendResponse(500, ["Status" => "Failed"]);
@@ -45,7 +47,22 @@ class Products
                 ':price' => $data->price,
                 ':type' => $data->type,
             );
-            ((new ProductModel('products'))->add_product($newProductArr, $data->productProperties));
+
+            $ProductProperties = array();
+
+            for ($i = 0; $i < count($data->productProperties); $i++) {
+                $product_property = array();
+                foreach ($data->productProperties[$i] as $key => $value) {
+                    $product_property[":$key"] = $value;
+
+                }
+                array_push($ProductProperties, $product_property);
+
+            }
+//            ServerLogger::log("here in else ", json_encode($ProductProperties));
+
+            ((new ProductModel('products'))->add_product($newProductArr, $ProductProperties));
+
 
             (sendResponse(201, json_encode(["message" => "Success"])));
         } catch (mysqli_sql_exception $e) {
@@ -58,7 +75,12 @@ class Products
         try {
 
             $data = json_decode(file_get_contents("php://input"));
-            $result = (new ProductModel('protucts'))->delete_products($data->products);
+//            ServerLogger::log(json_encode($data  ));
+            ServerLogger::log(json_encode($data));
+
+            $result = (new ProductModel('products'))->delete_products($data);
+
+
             if ($result == true) {
                 echo "result is true";
                 sendResponse(200, "Products Deleted!");
@@ -147,13 +169,14 @@ class Products
             $property = (new TypePropertiesModel('type_properties'))->get_type_properties($property_info[$key]['property_id'])[0];
             $propery_name = $property['property'];
             $propery_unit = $property['unit'];
+//            ServerLogger::log("here in the first if ", json_encode($property_info[$key])  );
 
             array_push($product_properties_info, array(
                 "id" => $property_info[0]['id'],
-                "product_id" => $property_info[0]['product_id'],
+                "product_id" => $property_info[$key]['product_id'],
                 "type" => $type_name,
                 "property" => $propery_name,
-                "value" => $property_info[0]['value'],
+                "value" => $property_info[$key]['value'],
                 "unit" => $propery_unit,
             ));
 

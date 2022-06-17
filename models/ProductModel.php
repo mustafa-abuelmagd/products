@@ -25,7 +25,9 @@ class ProductModel extends QueryBuilder
     public function show_all()
     {
         try {
-            return $this->select(['*'], 'products')->bind()->fetchAll(PDO::FETCH_ASSOC);
+            $result = $this->select(['*'], 'products')->bind()->fetchAll(PDO::FETCH_ASSOC);
+
+            return $result;
 
         } catch (mysqli_sql_exception $e) {
             throw new mysqli_sql_exception();
@@ -58,7 +60,7 @@ class ProductModel extends QueryBuilder
             if ($adding_new_product_result == 1) {
                 $added_product_id = $this->find($data[':SKU']);
                 for ($i = 0; $i < count($productProperties); $i++) {
-                    $productProperties[$i]->product_id = $added_product_id['id'];
+                    $productProperties[$i][":product_id"] = $added_product_id['id'];
                 }
                 $adding_product_properties_result = (new ProductPropertyModel('product_properties'))->add_product_property($productProperties);
                 return $adding_new_product_result && $adding_product_properties_result;
@@ -72,17 +74,19 @@ class ProductModel extends QueryBuilder
 
     public function delete_products(array $data)
     {
+
         try {
 
             foreach ($data as $product) {
                 if ($this->find($product) != null) {
+
                     echo ($this->find($product) == null) . "  ";
 
                     $this->delete('products', 'sku', $product);
-                    return true;
+//                    return true;
 
                 } else {
-                    return false;
+//                    return false;
                 }
 
             }
@@ -92,7 +96,6 @@ class ProductModel extends QueryBuilder
 
         }
     }
-
 
 
 }

@@ -99,20 +99,28 @@ abstract class QueryBuilder
 
 
             if (str_contains($this->query, $key)) {
-                if (str_contains(json_encode($val), "{")) {
-                    $this->stmt->bindValue("$key", json_encode($val));
+//                if (str_contains(json_encode($val), "{")) {
+//                    $this->stmt->bindValue("$key", json_encode($val));
+//                    ServerLogger::log("here in the first if " , json_encode( [$key , $val]  ));
+//
+//
+//
+//                } else {
+//                    $this->stmt->bindValue("$key", "$val");
+//                    ServerLogger::log( "here in else ",json_encode( [$key , $val]  ));
+//
+//
+//
+//                }
+                $this->stmt->bindValue("$key", "$val");
 
-                } else {
-                    $this->stmt->bindValue("$key", "$val");
-
-                }
             }
         }
         return $this;
     }
 
 
-    public function bindParams2($data , $separator)
+    public function bindParams2($data, $separator)
     {
         $this->stmt->bindValue(":type_name", $data);
         $this->stmt->bindValue(":separator", $separator);
@@ -142,10 +150,10 @@ abstract class QueryBuilder
     {
         try {
 
-            if ($this->stmt->execute() ==1 ) {
+
+            if ($this->stmt->execute() == 1) {
                 return true;
-            }
-            else {
+            } else {
                 return false;
             }
         } catch (mysqli_sql_exception $e) {

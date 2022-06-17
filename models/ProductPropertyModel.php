@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../models/abs_model.php';
+require_once __DIR__ . '/../models/ServerLogger.php';
 
 class ProductPropertyModel extends QueryBuilder
 {
@@ -73,6 +74,7 @@ class ProductPropertyModel extends QueryBuilder
 
         try {
             foreach ($data as $key => $val) {
+
                 $this->indert_product_property('product_properties')->prpareStmt()->bindParams((array)$val)->executeStmt();
 
             }
