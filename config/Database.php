@@ -1,12 +1,20 @@
 <?php
 
+//class Database {
+//    private $host ='localhost:4306';
+//    private $user ='root';
+//    private $password = 'mysqlserver';
+//    private $dbname = 'products';
+//    private $port = 4306;
+//    private $conn;
 class Database {
-    private $host ='localhost:4306';
-    private $user ='root';
-    private $password = 'mysqlserver';
-    private $dbname = 'products';
-    private $port = 4306;
+    private $host ='codelyticaleg.com:3306';
+    private $user ='omar_grad';
+    private $password = 'Reem*01019965508';
+    private $dbname = 'admin_mostafa';
+    private $port = 3306;
     private $conn;
+
 
 
 
