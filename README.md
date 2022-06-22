@@ -17,7 +17,15 @@ The application serves the `index.php` file, which defines the routing rules, me
 
 
 
-## Additional features
+**Get All Products:** `http://your-domain/getAllProducts`,
+
+**Add Product:** `http://your-domain/addProduct`,
+
+**Delete Products:** `http://your-domain/deleteProducts`,
+
+
+
+
 
 ## Additional features
 The requirements state that the application should have **3 product types: Book, DVD, Furniture** but must use only **one API endpoint** to add any product type. The application provides additional end points for 
