@@ -30,6 +30,10 @@ The application serves the `index.php` file, which defines the routing rules, me
 ## Additional features
 The requirements state that the application should have **3 product types: Book, DVD, Furniture** but must use only **one API endpoint** to add any product type. The application provides additional end points for 
 
+
+
+![image](https://user-images.githubusercontent.com/37253065/175050914-46c9436d-971e-4f08-848f-e8f8e47763a9.png)
+
 **Get All Product Types:** `http://your-domain/getAllProductTypes`,
 
 **Add Product Type:** `http://your-domain/addProductType`,
@@ -41,6 +45,3 @@ The requirements state that the application should have **3 product types: Book,
  and finally **Get Application Data:** `http://your-domain/getApplicationData`,  which serves and array of all the **product types, and their properties**, to be later used to construct **dropdown menu items** and the **type property input fields** when rendering the application UI.
 
 
-
-
-![image](https://user-images.githubusercontent.com/37253065/175050914-46c9436d-971e-4f08-848f-e8f8e47763a9.png)
