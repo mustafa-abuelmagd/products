@@ -12,5 +12,8 @@
             "email": "37253065+mustafa-abuelmagd@users.noreply.github.com"
         }
     ],
-    "require": {}
+    "require": {
+      "ext-pdo": "*",
+        "ext-mysqli": "*"
+    }
 }

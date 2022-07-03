@@ -6,14 +6,14 @@ require_once __DIR__ . '/../models/ServerLogger.php';
 class ProductPropertyModel extends QueryBuilder
 {
 
-    public $table;
-    public $id;
-    public $sku;
-    public $name;
-    public $price;
-    public $type;
-    public $properties;
-    public $inputs;
+    public string $table;
+    public int $id = 0 ;
+    public string $sku = '';
+    public string $name = '';
+    public int $price = 0;
+    public string $type = '';
+    public array $properties = [];
+    public array $inputs =[];
 
     function __construct($table_name)
     {
@@ -21,33 +21,33 @@ class ProductPropertyModel extends QueryBuilder
 
     }
 
-    public function show_all()
+    public function show_all(): bool|array
     {
         try {
             return $this->select(['*'], 'product_properties')->bind()->fetchAll(PDO::FETCH_ASSOC);
         } catch (mysqli_sql_exception $e) {
-            throw new mysqli_sql_exception();
+            throw new mysqli_sql_exception($e);
 
         }
     }
 
 
-    public function get_product_properties($product_id)
+    public function get_product_properties($product_id): bool|array
     {
         try {
             return $this->select(['*'], 'product_properties')->where('product_id', '=', $product_id)->bind()->fetchAll(PDO::FETCH_ASSOC);
         } catch (mysqli_sql_exception $e) {
-            throw new mysqli_sql_exception();
+            throw new mysqli_sql_exception($e);
 
         }
     }
 
-    public function get_product_assoc_properties($product_id, $property_id)
+    public function get_product_assoc_properties($product_id, $property_id): bool|array
     {
         try {
             return $this->select(['*'], 'product_properties')->where('product_id', '=', $product_id)->where('property_id', '=', $property_id)->bind()->fetchAll(PDO::FETCH_ASSOC);
         } catch (mysqli_sql_exception $e) {
-            throw new mysqli_sql_exception();
+            throw new mysqli_sql_exception($e);
 
         }
     }
@@ -62,27 +62,21 @@ class ProductPropertyModel extends QueryBuilder
                 return $result->fetch(PDO::FETCH_ASSOC);
             }
         }catch (mysqli_sql_exception $e) {
-            throw new mysqli_sql_exception();
+            throw new mysqli_sql_exception($e);
 
         }
 
     }
 
-    public function add_product_property(array $data)
+    public function add_product_property(array $data): bool
     {
-
-
         try {
             foreach ($data as $key => $val) {
-
                 $this->indert_product_property('product_properties')->prpareStmt()->bindParams((array)$val)->executeStmt();
-
             }
-
             return true;
         } catch (mysqli_sql_exception $e) {
             throw new mysqli_sql_exception();
-
         }
 
     }

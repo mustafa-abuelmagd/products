@@ -1,33 +1,8 @@
 <?php
-define("HOST", "c3185u2dmj.database.windows.net");
-define("USER", "deeque");
-define("PORT", "1433");
-define("PASSWORD", "ASdf1234");
-define("DATABASE", "deeque");
-define("SECURE", FALSE);
-define("BASE_DIR", "");
-define("BASE_URL", "");
 
 
-function response($response)
+function getStatusCodeMessage($status): string
 {
-    header("Content-Type: application/json");
-    header('Access-Control-Allow-Origin: *');
-
-//    echo json_encode($response);
-    return json_encode($response);
-
-}
-function sendResponse0($status = 200, $body = '', $content_type = 'application/json')
-{
-    echo "eeeeeeeeeeeeeee    ".getStatusCodeMessage($status);
-    $status_header = 'HTTP/1.1 ' . $status . ' ' . getStatusCodeMessage($status);
-    header($status_header);
-    header('Content-type: ' . $content_type);
-    echo $body;
-}
-
-function getStatusCodeMessage($status) {
     $codes = Array(
         100 => 'Continue',
         101 => 'Switching Protocols',
@@ -77,7 +52,8 @@ function getStatusCodeMessage($status) {
 }
 
 //Helper method to send a HTTP response code/message
-function sendResponse($status = 200, $body = '', $content_type = 'application/json') {
+function sendResponse($status = 200, $body = '', $content_type = 'application/json'): void
+{
     $status_header = 'HTTP/1.1 ' . $status . ' ' . getStatusCodeMessage($status);
     header($status_header);
     header('Content-type: ' . $content_type);

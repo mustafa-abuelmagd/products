@@ -5,14 +5,7 @@ require_once __DIR__ . '/../models/abs_model.php';
 class TypePropertiesModel extends QueryBuilder
 {
 
-    public $table;
-    public $id;
-    public $sku;
-    public $name;
-    public $price;
-    public $type;
-    public $properties;
-    public $inputs;
+    public string $table;
 
     function __construct($table_name)
     {
@@ -20,22 +13,22 @@ class TypePropertiesModel extends QueryBuilder
 
     }
 
-    public function show_all()
+    public function show_all(): bool|array
     {
         try {
             return $this->select(['*'], 'type_properties')->bind()->fetchAll(PDO::FETCH_ASSOC);
         } catch (mysqli_sql_exception $e) {
-            throw new mysqli_sql_exception();
+            throw new mysqli_sql_exception($e);
 
         }
     }
 
-    public function get_type_properties($id)
+    public function get_type_properties($id): bool|array
     {
         try {
             return $this->select(['*'], 'type_properties')->where('id', '=', $id)->bind()->fetchAll(PDO::FETCH_ASSOC);
         } catch (mysqli_sql_exception $e) {
-            throw new mysqli_sql_exception();
+            throw new mysqli_sql_exception($e);
 
         }
     }
@@ -50,16 +43,16 @@ class TypePropertiesModel extends QueryBuilder
                 return $result->fetch(PDO::FETCH_ASSOC);
             }
         } catch (mysqli_sql_exception $e) {
-            throw new mysqli_sql_exception();
+            throw new mysqli_sql_exception($e);
 
         }
     }
 
-    public function add_type_property(string $property, string $unit, string $type_id)
+    public function add_type_property(string $property, string $unit, string $type_id): bool
     {
         try {
             if (!$this->find($property) != null) {
-                return $this->indert_type_property
+                return $this->insert_type_property
                 ('type_properties')->prpareStmt()->bindParams([":property" => $property, ":unit" => $unit, ":type_id" => $type_id])->executeStmt();
 
             } else {
@@ -67,7 +60,7 @@ class TypePropertiesModel extends QueryBuilder
             }
 
         } catch (mysqli_sql_exception $e) {
-            throw new mysqli_sql_exception();
+            throw new mysqli_sql_exception($e);
 
         }
     }

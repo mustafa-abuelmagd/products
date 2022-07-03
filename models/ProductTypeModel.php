@@ -5,37 +5,31 @@ require_once __DIR__ . '/../models/abs_model.php';
 class ProductTypeModel extends QueryBuilder
 {
 
-    public $table;
-    public $id;
-    public $sku;
-    public $name;
-    public $price;
-    public $type;
-    public $properties;
-    public $inputs;
-
+    public string $table;
+    public string $name = '';
+    public string $type = '' ;
     function __construct($table_name)
     {
         parent::__construct($table_name);
 
     }
 
-    public function show_all()
+    public function show_all(): bool|array
     {
         try {
             return $this->select(['*'], 'product_types')->bind()->fetchAll(PDO::FETCH_ASSOC);
         } catch (mysqli_sql_exception $e) {
-            throw new mysqli_sql_exception();
+            throw new mysqli_sql_exception($e);
 
         }
     }
 
-    public function get_product_type($id)
+    public function get_product_type($id): bool|array
     {
         try {
             return $this->select(['type_name'], 'product_types')->where('id', '=', $id)->bind()->fetchAll(PDO::FETCH_ASSOC);
         } catch (mysqli_sql_exception $e) {
-            throw new mysqli_sql_exception();
+            throw new mysqli_sql_exception($e);
 
         }
     }
@@ -50,7 +44,7 @@ class ProductTypeModel extends QueryBuilder
                 return $result->fetch(PDO::FETCH_ASSOC);
             }
         } catch (mysqli_sql_exception $e) {
-            throw new mysqli_sql_exception();
+            throw new mysqli_sql_exception($e);
 
         }
     }
@@ -65,7 +59,7 @@ class ProductTypeModel extends QueryBuilder
                 return $result->fetch(PDO::FETCH_ASSOC);
             }
         } catch (mysqli_sql_exception $e) {
-            throw new mysqli_sql_exception();
+            throw new mysqli_sql_exception($e);
 
         }
     }
@@ -73,20 +67,14 @@ class ProductTypeModel extends QueryBuilder
     public function add_product_type(string $data , string $separator)
     {
         try {
-//            $adding_product_type_result =
             if (!($this->find_by_name($data)) != null) {
                 echo $this->general_insert('product_types')->prpareStmt()->bindParams2($data, $separator)->executeStmt();
 
             } else {
                 throw new mysqli_sql_exception();
             }
-//            echo '$adding_product_type_result   ' . $adding_product_type_result . "\n";
-//            $added_type_id = $this->find_by_name($data)['id'];
-//            echo '$added_type_id   ' . json_encode($added_type_id['id']) . "\n";
-
-
         } catch (mysqli_sql_exception $e) {
-            throw new mysqli_sql_exception();
+            throw new mysqli_sql_exception($e);
 
         }
 

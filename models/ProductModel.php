@@ -7,14 +7,13 @@ require_once __DIR__ . '/../models/ProductPropertyModel.php';
 class ProductModel extends QueryBuilder
 {
 
-    public $table;
-    public $id;
-    public $sku;
-    public $name;
-    public $price;
-    public $type;
-    public $properties;
-    public $inputs;
+    public string $table;
+    public int $id =0 ;
+    public string $sku = '';
+    public string $name = '';
+    public string $price = '';
+    public string $type ='';
+    public array $properties = [];
 
     function __construct($table_name)
     {
@@ -22,16 +21,12 @@ class ProductModel extends QueryBuilder
 
     }
 
-    public function show_all()
+    public function show_all(): bool|array
     {
         try {
-            $result = $this->select(['*'], 'products')->bind()->fetchAll(PDO::FETCH_ASSOC);
-
-            return $result;
-
+            return $this->select(['*'], 'products')->bind()->fetchAll(PDO::FETCH_ASSOC);
         } catch (mysqli_sql_exception $e) {
-            throw new mysqli_sql_exception();
-
+            throw new mysqli_sql_exception($e);
         }
 
 
@@ -48,12 +43,12 @@ class ProductModel extends QueryBuilder
                 return $result->fetch(PDO::FETCH_ASSOC);
             }
         } catch (mysqli_sql_exception $e) {
-            throw new mysqli_sql_exception();
+            throw new mysqli_sql_exception($e);
 
         }
     }
 
-    public function add_product(array $data, array $productProperties)
+    public function add_product(array $data, array $productProperties): bool
     {
         try {
             $adding_new_product_result = $this->insert('products')->prpareStmt()->bindParams($data)->executeStmt();
@@ -62,13 +57,12 @@ class ProductModel extends QueryBuilder
                 for ($i = 0; $i < count($productProperties); $i++) {
                     $productProperties[$i][":product_id"] = $added_product_id['id'];
                 }
-                $adding_product_properties_result = (new ProductPropertyModel('product_properties'))->add_product_property($productProperties);
-                return $adding_new_product_result && $adding_product_properties_result;
+                return (new ProductPropertyModel('product_properties'))->add_product_property($productProperties);
             } else {
                 throw new mysqli_sql_exception();
             }
         } catch (mysqli_sql_exception $e) {
-            throw new mysqli_sql_exception();
+            throw new mysqli_sql_exception($e);
         }
     }
 
@@ -83,16 +77,12 @@ class ProductModel extends QueryBuilder
                     echo ($this->find($product) == null) . "  ";
 
                     $this->delete('products', 'sku', $product);
-//                    return true;
-
                 } else {
-//                    return false;
+                    throw new mysqli_sql_exception();
                 }
-
             }
-
         } catch (mysqli_sql_exception $e) {
-            throw new mysqli_sql_exception();
+            throw new mysqli_sql_exception($e);
 
         }
     }

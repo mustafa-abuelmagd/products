@@ -5,12 +5,10 @@ require_once __DIR__ . '/../config/Database.php';
 abstract class QueryBuilder
 {
 
-    public $conn;
-//    public $tabdddddd = 'roducts';
-
-    public $table;
-    public $query = '';
-    public $data = array();
+    public PDO $conn;
+    public string $table = '';
+    public string $query = '';
+    public array $data = array();
     public $stmt;
 
 
@@ -23,134 +21,103 @@ abstract class QueryBuilder
     }
 
 
-    public function select(array $cols, string $from)
+    public function select(array $cols, string $from): static
     {
-//        echo 'table name is ' . $this->table;
         $this->query = 'SELECT ' . implode(',', $cols) . ' FROM ' . $from;
-
         return $this;
     }
 
-
-    public function where(string $col, string $op, string $val)
+    public function where(string $col, string $op, string $val): static
     {
         $val = '"' . $val . '"';
         $this->query .= ' WHERE ' . $col . ' ' . $op . ' ' . $val;
-//        echo  ' and the value is ' . gettype($val);
         return $this;
     }
 
-    public function limit(array $numbers)
+    public function limit(array $numbers): static
     {
         $this->query .= ' LIMIT ' . implode(',', $numbers);
         return $this;
     }
 
-    public function insert(string $in)
+    public function insert(string $in): static
     {
         $this->query = 'INSERT INTO ' . $in . ' SET sku = :SKU , name = :name , price = :price , type = :type  ';
         return $this;
     }
 
-    public function general_insert(string $in)
+    public function general_insert(string $in): static
     {
         $this->query = 'INSERT INTO ' . $in . ' SET type_name = :type_name , `separator` = :separator ';
         return $this;
     }
 
-    public function indert_type_property(string $in)
+    public function insert_type_property(string $in): static
     {
-//        echo count($data);
         $this->query = 'INSERT INTO ' . $in . ' SET  property = :property , unit = :unit , type_id = :type_id ';
         return $this;
     }
 
-    public function indert_product_property(string $in)
+    public function insert_product_property(string $in): static
     {
-//        echo count($data);
         $this->query = 'INSERT INTO ' . $in . ' SET  product_id = :product_id , type_id = :type_id  , property_id = :property_id , value = :value';
         return $this;
     }
 
 
-    function field(string $field_name, string $value)
+    function field(string $field_name, string $value): static
     {
         $this->query .= "  $field_name  = :$field_name ";
         $this->stmt = $this->conn->prepare($this->query);
-//        echo 'llllool '.$this->stmt->bindValue(":$field_name", "$value");
-
         return $this;
     }
 
-    public function bindValues(string $field_name, string $value)
+    public function bindValues(string $field_name, string $value): static
     {
         echo $field_name . ' => ' . json_encode($value);
-//        $this->prpareStmt();
-
         $this->stmt->bindValue("$field_name", json_encode($value));
-
         return $this;
     }
 
 
-    public function bindParams(array $data)
+    public function bindParams(array $data): static
     {
         foreach ($data as $key => $val) {
-
-
             if (str_contains($this->query, $key)) {
-//                if (str_contains(json_encode($val), "{")) {
-//                    $this->stmt->bindValue("$key", json_encode($val));
-//                    ServerLogger::log("here in the first if " , json_encode( [$key , $val]  ));
-//
-//
-//
-//                } else {
-//                    $this->stmt->bindValue("$key", "$val");
-//                    ServerLogger::log( "here in else ",json_encode( [$key , $val]  ));
-//
-//
-//
-//                }
                 $this->stmt->bindValue("$key", "$val");
-
             }
         }
         return $this;
     }
 
 
-    public function bindParams2($data, $separator)
+    public function bindParams2($data, $separator): static
     {
         $this->stmt->bindValue(":type_name", $data);
         $this->stmt->bindValue(":separator", $separator);
         return $this;
     }
 
-    public function bindParams3(array $data)
+    public function bindParams3(array $data): static
     {
         echo $this->stmt->queryString;
         foreach ($data as $key => $val) {
             echo $key . '=>' . $val;
-//            $this->stmt->bindValue(":type_name", $data );
-
         }
         return $this;
     }
 
 
-    public function prpareStmt()
+    public function prpareStmt(): static
     {
         $this->stmt = $this->conn->prepare($this->query);
         return $this;
     }
 
 
-    public function executeStmt()
+    public function executeStmt(): bool
     {
         try {
-
-
             if ($this->stmt->execute() == 1) {
                 return true;
             } else {
@@ -159,32 +126,19 @@ abstract class QueryBuilder
         } catch (mysqli_sql_exception $e) {
 
             throw new mysqli_sql_exception();
-
         }
     }
 
-    public function bind()
+    public function bind(): bool|PDOStatement|null
     {
         $this->stmt = $this->conn->prepare($this->query);
-
         $this->data = array();
-//        echo $this->stmt->queryString ."\n";
-
         if (!$this->stmt->execute()) {
             return null;
         } else {
 
             return $this->stmt;
         }
-
-//        try {
-//            return $this->stmt->execute();
-//        } catch (exception $e) {
-//            echo " an exception  $e";
-//        }
-
-//        return $this->stmt;
-
     }
 
     public function bind2()
@@ -196,7 +150,7 @@ abstract class QueryBuilder
     }
 
 
-    public function get()
+    public function get(): void
     {
 
         echo $this->bind()->fetchAll(PDO::FETCH_ASSOC);
@@ -204,7 +158,7 @@ abstract class QueryBuilder
 
     }
 
-    public function delete(string $from, string $col, string $val)
+    public function delete(string $from, string $col, string $val): bool|PDOStatement|null
     {
         $this->query = " DELETE FROM " . "$from ";
         $this->where($col, '=', $val);
@@ -215,4 +169,3 @@ abstract class QueryBuilder
 }
 
 
-?>
