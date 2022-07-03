@@ -14,38 +14,6 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Autho
 header("Access-Control-Allow-Headers: X-Requested-With");
 
 
-//if (isset($_SERVER['HTTP_ORIGIN'])) {
-//    ServerLogger::log("came here ");
-//    header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
-//    header('Access-Control-Allow-Credentials: true');
-//    header('Access-Control-Max-Age: 86400');    // cache for 1 day
-//    ServerLogger::log("came here    4" , $_SERVER['HTTP_ORIGIN']);
-//
-//}
-//
-//// Access-Control headers are received during OPTIONS requests
-//if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-//    ServerLogger::log("cameddddddddddddddd here " , $_SERVER['REQUEST_METHOD']);
-//
-//
-//    if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
-//        header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-//
-//    if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
-//        header("Access-Control-Allow-Headers:        {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
-//
-//    exit(0);
-//}
-//
-//echo "You have CORS!";
-//
-//header('Access-Control-Allow-Origin: *');
-//header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
-
-
-
-
-
 $router = new Router();
 
 

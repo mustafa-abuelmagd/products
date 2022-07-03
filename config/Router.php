@@ -54,15 +54,6 @@ class Router
 
     public function run()
     {
-
-//         echo 'came here  '.parse_url($_SERVER['REQUEST_URI'])['path'] ;
-//        ServerLogger::log(json_encode($_SERVER["HTTP_SEC_FETCH_MODE"]));
-
-//        $_SERVER["HTTP_SEC_FETCH_MODE"] =  "no cors";
-
-//        ServerLogger::log(json_encode($_SERVER["HTTP_SEC_FETCH_MODE"]));
-
-
         $requstedUri = parse_url($_SERVER['REQUEST_URI']);
         $requestPath = $requstedUri['path'];
         $method = $_SERVER['REQUEST_METHOD'];
@@ -74,20 +65,11 @@ class Router
             // var_dump($handler);
             // echo ($handler['path']   == $requestPath)&&($handler['method']   == $method);
             if ($handler['path'] === $requestPath && $method === $handler['method']) {
-
-//                 echo 'came here  ' . $handler['method'] . '   ' . $handler['path'] . '          ' . $requestPath . '              dfdf';
-
                 $callback = $handler['handler'];
 
 
             }
-            //     else {
-
-
-            //     }
         }
-
-        // echo 'came here' . parse_url($_SERVER['REQUEST_URI'])['path'] . $_SERVER['REQUEST_METHOD'];
 
         if (!$callback) {
             header("HTTP/1.0 404 Not Found!");
@@ -95,13 +77,7 @@ class Router
                 $callback = $this->notFoundHandler;
             }
         }
-        // else{
-        //     echo call_user_func_array($callback , [
-        //         array_merge( $_GET , $_POST)
-        //     ]);
-        // }
-//        echo $callback;
-        call_user_func_array($callback, [
+            call_user_func_array($callback, [
             array_merge($_GET, $_POST)
         ]);
 
