@@ -34,20 +34,20 @@ class ProductTypeModel extends QueryBuilder
         }
     }
 
-    public function find(string $id)
-    {
-        try {
-            $result = $this->select(['*'], 'product_types')->where('id', '=', $id)->limit([1])->bind();
-            if ($result == null) {
-                return false;
-            } else {
-                return $result->fetch(PDO::FETCH_ASSOC);
-            }
-        } catch (mysqli_sql_exception $e) {
-            throw new mysqli_sql_exception($e);
-
-        }
-    }
+//    public function find(string $id)
+//    {
+//        try {
+//            $result = $this->select(['*'], 'product_types')->where('id', '=', $id)->limit([1])->bind();
+//            if ($result == null) {
+//                return false;
+//            } else {
+//                return $result->fetch(PDO::FETCH_ASSOC);
+//            }
+//        } catch (mysqli_sql_exception $e) {
+//            throw new mysqli_sql_exception($e);
+//
+//        }
+//    }
 
     public function find_by_name(string $type_name)
     {
@@ -64,11 +64,11 @@ class ProductTypeModel extends QueryBuilder
         }
     }
 
-    public function add_product_type(string $data , string $separator)
+    public function add_product_type(string $data , string $separator): bool
     {
         try {
             if (!($this->find_by_name($data)) != null) {
-                echo $this->general_insert('product_types')->prpareStmt()->bindParams2($data, $separator)->executeStmt();
+                return  $this->general_insert('product_types')->prpareStmt()->bindParams2($data, $separator)->executeStmt();
 
             } else {
                 throw new mysqli_sql_exception();

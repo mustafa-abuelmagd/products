@@ -52,10 +52,10 @@ function getStatusCodeMessage($status): string
 }
 
 //Helper method to send a HTTP response code/message
-function sendResponse($status = 200, $body = '', $content_type = 'application/json'): void
+function sendResponse($status = 200, $body = '', $content_type = 'application/json')
 {
     $status_header = 'HTTP/1.1 ' . $status . ' ' . getStatusCodeMessage($status);
     header($status_header);
     header('Content-type: ' . $content_type);
-    echo $body;
+    return $body;
 }

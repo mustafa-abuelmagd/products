@@ -19,7 +19,7 @@
                     }
                     sendResponse(200, json_encode($products_json));
                 } catch (mysqli_sql_exception $e) {
-                    sendResponse(500, ["Status" => "Failed"]);
+                    sendResponse(500, ["Status" => "Failed" , 'message' => $e->getMessage()]);
                 }
             }
             
@@ -53,7 +53,7 @@
                     
                     sendResponse(201, json_encode(["message" => "Success"]));
                 } catch (mysqli_sql_exception $e) {
-                    sendResponse(422, "Product already exists");
+                    sendResponse(422, ["Status "=>"Product already exists" , 'message' => $e->getMessage()]);
                 }
             }
             
@@ -78,21 +78,22 @@
             public static function get_types_data()
             {
                 try {
-                    $product_types = (new ProductTypeModel('protuct_types'))->show_all();
+                    $product_types = (new ProductTypeModel('product_types'))->show_all();
                     $type_properties = (new TypePropertiesModel('type_properties'))->show_all();
                     
                     for ($i = 0; $i < count($product_types); $i++) {
                         $product_types[$i]['properties'] = array();
                         for ($j = 0; $j < count($type_properties); $j++) {
                             if ($product_types[$i]['id'] == $type_properties[$j]['type_id']) {
-                                array_push($product_types[$i]['properties'], $type_properties[$j]);
+                                $product_types[$i]['properties'][] = $type_properties[$j];
+
                             }
                         }
                     }
-                    sendResponse(200, json_encode($product_types));
+                    return sendResponse(200, json_encode($product_types));
                     
                 } catch (mysqli_sql_exception $e) {
-                    sendResponse(500, ["Status" => "Failed"]);
+                    return sendResponse(500, ["Status" => "Failed","message" => $e->getMessage()]);
                 }
             }
             
@@ -103,7 +104,7 @@
                 try {
                     sendResponse(200, new ProductPropertyModel('product_properties'))->get_product_properties($sku);
                 } catch (mysqli_sql_exception $e) {
-                    sendResponse(500, ["Status" => "Failed"]);
+                    sendResponse(500, ["Status" => "Failed" , "message" => $e->getMessage()]);
                 }
             }
             
@@ -111,9 +112,9 @@
             public static function get_type_properties($id)
             {
                 try {
-                    return (new TypePropertiesModel('type_properties'))->get_type_properties($id);
+                    return sendResponse(200 ,(new TypePropertiesModel('type_properties'))->get_type_properties($id));
                 } catch (mysqli_sql_exception $e) {
-                    sendResponse(500, ["Status" => "Failed"]);
+                    return sendResponse(500, ["Status" => "Failed","message" => $e->getMessage()]);
                 }
             }
             
@@ -121,9 +122,9 @@
             public static function get_product_type($id)
             {
                 try {
-                    return (new ProductTypeModel('product_properties'))->get_product_type($id);
+                    return sendResponse(200 ,(new ProductTypeModel('product_properties'))->get_product_type($id));
                 } catch (mysqli_sql_exception $e) {
-                    sendResponse(500, ["Status" => "Failed"]);
+                    return sendResponse(500, ["Status" => "Failed"  ,"message" => $e->getMessage()]);
                     
                     
                 }

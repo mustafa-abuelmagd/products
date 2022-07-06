@@ -81,6 +81,7 @@ class ProductModel extends QueryBuilder
                     throw new mysqli_sql_exception();
                 }
             }
+            return true;
         } catch (mysqli_sql_exception $e) {
             throw new mysqli_sql_exception($e);
 

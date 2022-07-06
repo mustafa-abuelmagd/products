@@ -43,6 +43,7 @@ abstract class QueryBuilder
     public function insert(string $in): static
     {
         $this->query = 'INSERT INTO ' . $in . ' SET sku = :SKU , name = :name , price = :price , type = :type  ';
+        $this->query = 'INSERT INTO ' . $in . ' SET sku = :SKU , name = :name , price = :price , type = :type  ';
         return $this;
     }
 

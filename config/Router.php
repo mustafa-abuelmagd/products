@@ -3,12 +3,12 @@
 class Router
 {
 
-    private $handlers = array();
+    private array $handlers = array();
     private const METHOD_POST = 'POST';
     private const METHOD_GET = 'GET';
     private const METHOD_DELETE = 'DELETE';
 
-    private $notFoundHandler;
+    private  $notFoundHandler;
 
 
     public function get(string $path, $handler): void
@@ -52,10 +52,10 @@ class Router
 
     }
 
-    public function run()
+    public function run(): void
     {
-        $requstedUri = parse_url($_SERVER['REQUEST_URI']);
-        $requestPath = $requstedUri['path'];
+        $requestedUri = parse_url($_SERVER['REQUEST_URI']);
+        $requestPath = $requestedUri['path'];
         $method = $_SERVER['REQUEST_METHOD'];
 
         $callback = null;
@@ -86,4 +86,3 @@ class Router
 }
 
 
-?>
