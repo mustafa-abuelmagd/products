@@ -3,8 +3,13 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "Mustafa\\Products\\": "src/"
-        }
+            "Models\\": "src/models/",
+            "Config\\": "src/config/"
+        },
+        "files": [
+            "src/utils/response.php"
+        ]
+
     },
     "authors": [
         {

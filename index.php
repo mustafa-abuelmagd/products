@@ -1,7 +1,8 @@
 <?php
-include_once './config/Router.php';
-require_once __DIR__ . '/models/Products.php';
-require_once  __DIR__.'/models/ServerLogger.php';
+
+require_once __DIR__.'/vendor/autoload.php';
+use Config\Router;
+use Models\Products;
 define('DirName', getcwd());
 
 header("Access-Control-Allow-Origin: *");
@@ -16,13 +17,13 @@ header("Access-Control-Allow-Headers: X-Requested-With");
 
 $router = new Router();
 
-
 //$router->get('/', Products::class . '::index');
 //
 
 
 // BASIC REQUIRED OPERATIONS
 
+//$router->get('/getAllProducts', $products->get_all_products());
 $router->get('/getAllProducts', Products::class . '::get_all_products');
 $router->post('/addProduct', Products::class . '::add_new_product');
 $router->post('/deleteProducts', Products::class . '::delete_products');

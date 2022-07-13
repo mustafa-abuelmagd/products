@@ -1,7 +1,12 @@
 <?php
 
-require_once __DIR__ . '/../models/abs_model.php';
-require_once __DIR__ . '/../models/ServerLogger.php';
+
+namespace Models;
+use mysqli_sql_exception;
+use PDO;
+
+require_once __DIR__ . '/../../vendor/autoload.php';
+
 
 class ProductPropertyModel extends QueryBuilder
 {

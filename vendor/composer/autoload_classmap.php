@@ -7,4 +7,12 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'Config\\Database' => $baseDir . '/src/config/Database.php',
+    'Config\\Router' => $baseDir . '/src/config/Router.php',
+    'Models\\ProductModel' => $baseDir . '/src/models/ProductModel.php',
+    'Models\\ProductPropertyModel' => $baseDir . '/src/models/ProductPropertyModel.php',
+    'Models\\ProductTypeModel' => $baseDir . '/src/models/ProductTypeModel.php',
+    'Models\\Products' => $baseDir . '/src/models/Products.php',
+    'Models\\QueryBuilder' => $baseDir . '/src/models/QueryBuilder.php',
+    'Models\\TypePropertiesModel' => $baseDir . '/src/models/TypePropertiesModel.php',
 );

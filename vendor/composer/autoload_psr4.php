@@ -6,5 +6,6 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Mustafa\\Products\\' => array($baseDir . '/src'),
+    'Models\\' => array($baseDir . '/src/models'),
+    'Config\\' => array($baseDir . '/src/config'),
 );

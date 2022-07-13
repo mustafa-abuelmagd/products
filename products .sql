@@ -266,7 +266,7 @@ $(function() {
 
 <ul>
   
-  <!-- CONTROLS START --><li id="navigation_controls_outer"><div id="navigation_controls"><a href="#" id="pma_navigation_collapse" title="Collapse all"><img src="themes/dot.gif" title="Collapse all" alt="Collapse all" class="icon ic_s_collapseall"></a><a href="#" id="pma_navigation_sync" title="Unlink from main panel"><img src="themes/dot.gif" title="Unlink from main panel" alt="Unlink from main panel" class="icon ic_s_link"></a></div></li><!-- CONTROLS ENDS -->
+  <!-- CONTROLS START --><li id="navigation_controls_outer"><div id="navigation_controls"><a href="#" id="pma_navigation_collapse" title="Collapse all"><img utils="themes/dot.gif" title="Collapse all" alt="Collapse all" class="icon ic_s_collapseall"></a><a href="#" id="pma_navigation_sync" title="Unlink from main panel"><img utils="themes/dot.gif" title="Unlink from main panel" alt="Unlink from main panel" class="icon ic_s_link"></a></div></li><!-- CONTROLS ENDS -->
 </ul>
 
 

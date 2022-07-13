@@ -1,6 +1,9 @@
 <?php
 
+namespace Models;
 require_once __DIR__ . '/../config/Database.php';
+use Config\Database;
+use PDO;
 
 abstract class QueryBuilder
 {
@@ -130,7 +133,7 @@ abstract class QueryBuilder
         }
     }
 
-    public function bind(): bool|PDOStatement|null
+    public function bind()
     {
         $this->stmt = $this->conn->prepare($this->query);
         $this->data = array();

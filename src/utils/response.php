@@ -1,5 +1,7 @@
 <?php
 
+//namespace Utils;
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 function getStatusCodeMessage($status): string
 {

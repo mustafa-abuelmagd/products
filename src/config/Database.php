@@ -1,12 +1,19 @@
 <?php
 
+namespace Config;
+use PDO;
+
+require_once __DIR__ . '/../../vendor/autoload.php';
+
 class Database {
-    private $host ='192.168.1.9:4306';
-    private $user ='root';
-    private $password = 'mysqlserver';
-    private $dbname = 'products';
+    private $host ='codelyticaleg.com:3306';
+    private $user ='omar_grad';
+    private $password = 'Reem*01019965508';
+    private $dbname = 'admin_mostafa';
     private $port = 4306;
     private $conn;
+
+
 
 
 
@@ -21,7 +28,6 @@ class Database {
             $this->conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-//        echo 'database error';
 
 
         } catch(PDOException $e){
@@ -29,7 +35,7 @@ class Database {
         }
 
 
-        return $this->conn; 
+        return $this->conn;
     }
 
 }

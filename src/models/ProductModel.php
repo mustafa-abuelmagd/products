@@ -1,7 +1,9 @@
 <?php
 
-require_once __DIR__ . '/../models/abs_model.php';
-require_once __DIR__ . '/../models/ProductPropertyModel.php';
+namespace Models;
+use PDO;
+
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 
 class ProductModel extends QueryBuilder
