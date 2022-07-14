@@ -68,22 +68,6 @@ abstract class QueryBuilder
         return $this;
     }
 
-//
-//    function field(string $field_name, string $value): static
-//    {
-//        $this->query .= "  $field_name  = :$field_name ";
-//        $this->stmt = $this->conn->prepare($this->query);
-//        return $this;
-//    }
-
-//    public function bindValues(string $field_name, string $value): static
-//    {
-//        echo $field_name . ' => ' . json_encode($value);
-//        $this->stmt->bindValue("$field_name", json_encode($value));
-//        return $this;
-//    }
-
-
     public function bindParams(array $data): static
     {
         foreach ($data as $key => $val) {
@@ -101,16 +85,6 @@ abstract class QueryBuilder
         $this->stmt->bindValue(":separator", $separator);
         return $this;
     }
-//
-//    public function bindParams3(array $data): static
-//    {
-//        echo $this->stmt->queryString;
-//        foreach ($data as $key => $val) {
-//            echo $key . '=>' . $val;
-//        }
-//        return $this;
-//    }
-
 
     public function prepareStmt(): static
     {
@@ -144,15 +118,6 @@ abstract class QueryBuilder
             return $this->stmt;
         }
     }
-
-//    public function bind2()
-//    {
-//        $result = $this->stmt->fetch(PDO::FETCH_ASSOC);
-//        echo "  " . $this->stmt->queryString;
-//        return $result;
-//
-//    }
-
 
     public function get(): void
     {
