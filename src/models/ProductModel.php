@@ -1,6 +1,7 @@
 <?php
 
 namespace Models;
+use mysqli_sql_exception;
 use PDO;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
@@ -53,7 +54,7 @@ class ProductModel extends QueryBuilder
     public function add_product(array $data, array $productProperties): bool
     {
         try {
-            $adding_new_product_result = $this->insert('products')->prpareStmt()->bindParams($data)->executeStmt();
+            $adding_new_product_result = $this->insert('products')->prepareStmt()->bindParams($data)->executeStmt();
             if ($adding_new_product_result == 1) {
                 $added_product_id = $this->find($data[':SKU']);
                 for ($i = 0; $i < count($productProperties); $i++) {
@@ -68,7 +69,7 @@ class ProductModel extends QueryBuilder
         }
     }
 
-    public function delete_products(array $data)
+    public function delete_products(array $data): bool
     {
 
         try {

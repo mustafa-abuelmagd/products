@@ -72,7 +72,7 @@ class ProductTypeModel extends QueryBuilder
     {
         try {
             if (!($this->find_by_name($data)) != null) {
-                return  $this->general_insert('product_types')->prpareStmt()->bindParams2($data, $separator)->executeStmt();
+                return  $this->general_insert('product_types')->prepareStmt()->bindParams2($data, $separator)->executeStmt();
 
             } else {
                 throw new mysqli_sql_exception();

@@ -1,33 +1,31 @@
 <?php
 
 namespace Config;
+use Dotenv\Dotenv;
 use PDO;
+use PDOException;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
+$getEnv = Dotenv::createImmutable(__DIR__.'/../../');
+$getEnv->load();
 
 class Database {
-    private $host ='codelyticaleg.com:3306';
-    private $user ='omar_grad';
-    private $password = 'Reem*01019965508';
-    private $dbname = 'admin_mostafa';
-    private $port = 4306;
-    private $conn;
-
-
-
 
 
 
     public function connect(): PDO
     {
 
-        $this->conn = null ;
-
+        $conn = null ;
+        $host = $_ENV["DB_HOST"];
+        $user = $_ENV["DB_USERNAME"];
+        $password = $_ENV["DB_PASSWORD"];
+        $dbname = $_ENV["DB_DATABASE"];
         try{
-            $this->conn = new PDO( 'mysql:host='. $this->host .';dbname=' . $this->dbname , $this->user , $this->password);
-            $this->conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+            $conn = new PDO( 'mysql:host='. $host .';dbname=' . $dbname, $user, $password);
+            $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 
-            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
         } catch(PDOException $e){
@@ -35,7 +33,7 @@ class Database {
         }
 
 
-        return $this->conn;
+        return $conn;
     }
 
 }
@@ -45,4 +43,3 @@ class Database {
 
 
 
-?>

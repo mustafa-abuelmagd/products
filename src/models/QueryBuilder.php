@@ -3,6 +3,7 @@
 namespace Models;
 require_once __DIR__ . '/../config/Database.php';
 use Config\Database;
+use mysqli_sql_exception;
 use PDO;
 
 abstract class QueryBuilder
@@ -46,7 +47,6 @@ abstract class QueryBuilder
     public function insert(string $in): static
     {
         $this->query = 'INSERT INTO ' . $in . ' SET sku = :SKU , name = :name , price = :price , type = :type  ';
-        $this->query = 'INSERT INTO ' . $in . ' SET sku = :SKU , name = :name , price = :price , type = :type  ';
         return $this;
     }
 
@@ -68,20 +68,20 @@ abstract class QueryBuilder
         return $this;
     }
 
+//
+//    function field(string $field_name, string $value): static
+//    {
+//        $this->query .= "  $field_name  = :$field_name ";
+//        $this->stmt = $this->conn->prepare($this->query);
+//        return $this;
+//    }
 
-    function field(string $field_name, string $value): static
-    {
-        $this->query .= "  $field_name  = :$field_name ";
-        $this->stmt = $this->conn->prepare($this->query);
-        return $this;
-    }
-
-    public function bindValues(string $field_name, string $value): static
-    {
-        echo $field_name . ' => ' . json_encode($value);
-        $this->stmt->bindValue("$field_name", json_encode($value));
-        return $this;
-    }
+//    public function bindValues(string $field_name, string $value): static
+//    {
+//        echo $field_name . ' => ' . json_encode($value);
+//        $this->stmt->bindValue("$field_name", json_encode($value));
+//        return $this;
+//    }
 
 
     public function bindParams(array $data): static
@@ -101,18 +101,18 @@ abstract class QueryBuilder
         $this->stmt->bindValue(":separator", $separator);
         return $this;
     }
+//
+//    public function bindParams3(array $data): static
+//    {
+//        echo $this->stmt->queryString;
+//        foreach ($data as $key => $val) {
+//            echo $key . '=>' . $val;
+//        }
+//        return $this;
+//    }
 
-    public function bindParams3(array $data): static
-    {
-        echo $this->stmt->queryString;
-        foreach ($data as $key => $val) {
-            echo $key . '=>' . $val;
-        }
-        return $this;
-    }
 
-
-    public function prpareStmt(): static
+    public function prepareStmt(): static
     {
         $this->stmt = $this->conn->prepare($this->query);
         return $this;
@@ -129,7 +129,7 @@ abstract class QueryBuilder
             }
         } catch (mysqli_sql_exception $e) {
 
-            throw new mysqli_sql_exception();
+            throw new mysqli_sql_exception($e);
         }
     }
 
@@ -145,13 +145,13 @@ abstract class QueryBuilder
         }
     }
 
-    public function bind2()
-    {
-        $result = $this->stmt->fetch(PDO::FETCH_ASSOC);
-        echo "  " . $this->stmt->queryString;
-        return $result;
-
-    }
+//    public function bind2()
+//    {
+//        $result = $this->stmt->fetch(PDO::FETCH_ASSOC);
+//        echo "  " . $this->stmt->queryString;
+//        return $result;
+//
+//    }
 
 
     public function get(): void

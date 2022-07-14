@@ -2,12 +2,7 @@
 
 namespace Models;
 require_once __DIR__ . '/../../vendor/autoload.php';
-
 use mysqli_sql_exception;
-//use Models\response;
-//use Utils\;
-
-
 
 class Products
 {
@@ -109,7 +104,7 @@ class Products
     }
 
 
-    public static function get_type_properties($id)
+    public static function get_type_properties($id): void
     {
         try {
             echo sendResponse(200, (new TypePropertiesModel('type_properties'))->get_type_properties($id));
@@ -119,7 +114,7 @@ class Products
     }
 
 
-    public static function get_product_type($id)
+    public static function get_product_type($id): void
     {
         try {
             echo sendResponse(200, (new ProductTypeModel('product_properties'))->get_product_type($id));

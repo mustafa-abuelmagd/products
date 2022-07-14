@@ -72,7 +72,7 @@ class ProductPropertyModel extends QueryBuilder
     {
         try {
             foreach ($data as $key => $val) {
-                $this->insert_product_property('product_properties')->prpareStmt()->bindParams((array)$val)->executeStmt();
+                $this->insert_product_property('product_properties')->prepareStmt()->bindParams((array)$val)->executeStmt();
             }
             return true;
         } catch (mysqli_sql_exception $e) {

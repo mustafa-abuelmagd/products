@@ -58,7 +58,7 @@ class TypePropertiesModel extends QueryBuilder
         try {
             if (!$this->find($property) != null) {
                 return $this->insert_type_property
-                ('type_properties')->prpareStmt()->bindParams([":property" => $property, ":unit" => $unit, ":type_id" => $type_id])->executeStmt();
+                ('type_properties')->prepareStmt()->bindParams([":property" => $property, ":unit" => $unit, ":type_id" => $type_id])->executeStmt();
 
             } else {
                 throw new mysqli_sql_exception();
