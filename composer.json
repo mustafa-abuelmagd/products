@@ -1,25 +1,27 @@
 {
-    "name": "mustafa/products",
-    "type": "project",
-    "autoload": {
-        "psr-4": {
-            "Models\\": "src/models/",
-            "Config\\": "src/config/"
-        },
-        "files": [
-            "src/utils/response.php"
-        ]
-
+  "name": "mustafa/products",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "Models\\": "src/models/",
+      "Config\\": "src/config/"
     },
-    "authors": [
-        {
-            "name": "mustafaabuelmagd",
-            "email": "37253065+mustafa-abuelmagd@users.noreply.github.com"
-        }
-    ],
-    "require": {
-      "ext-pdo": "*",
-        "ext-mysqli": "*",
-        "vlucas/phpdotenv": "^5.4"
+    "files": [
+      "src/utils/response.php"
+    ]
+  },
+  "authors": [
+    {
+      "name": "mustafaabuelmagd",
+      "email": "37253065+mustafa-abuelmagd@users.noreply.github.com"
     }
+  ],
+  "require": {
+    "ext-pdo": "*",
+    "ext-mysqli": "*",
+    "vlucas/phpdotenv": "^5.4"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.7"
+  }
 }

@@ -2,58 +2,45 @@
 
 namespace Config;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
-
 class Router
 {
-
     private array $handlers = array();
     private const METHOD_POST = 'POST';
     private const METHOD_GET = 'GET';
     private const METHOD_DELETE = 'DELETE';
 
-    private  $notFoundHandler;
+    private $notFoundHandler;
 
 
     public function get(string $path, $handler): void
     {
         $this->addHandler(self::METHOD_GET, $path, $handler);
-        // echo 'came here  ' ;
-
-
     }
 
 
     public function post(string $path, $handler): void
     {
         $this->addHandler(self::METHOD_POST, $path, $handler);
-
     }
 
 
     public function delete(string $path, $handler): void
     {
         $this->addHandler(self::METHOD_DELETE, $path, $handler);
-
     }
 
     public function addHandler(string $method, string $path, $handler): void
     {
-
         $this->handlers[$method . $path] = [
-            'path' => $path,
-            'method' => $method,
-            'handler' => $handler
+        'path' => $path,
+        'method' => $method,
+        'handler' => $handler
         ];
-        // var_dump($this->handlers);
-
     }
 
     public function addNotFoundHandler($handler): void
     {
-
         $this->notFoundHandler = $handler;
-
     }
 
     public function run(): void
@@ -64,14 +51,10 @@ class Router
 
         $callback = null;
 
-
         foreach ($this->handlers as $handler) {
-            // var_dump($handler);
-            // echo ($handler['path']   == $requestPath)&&($handler['method']   == $method);
-            if ($handler['path'] === $requestPath && $method === $handler['method']) {
+            if ($handler['path'] === $requestPath &&
+            $method === $handler['method']) {
                 $callback = $handler['handler'];
-
-
             }
         }
 
@@ -81,12 +64,8 @@ class Router
                 $callback = $this->notFoundHandler;
             }
         }
-            call_user_func_array($callback, [
-            array_merge($_GET, $_POST)
+        call_user_func_array($callback, [
+        array_merge($_GET, $_POST)
         ]);
-
-
     }
 }
-
-

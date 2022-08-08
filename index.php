@@ -1,8 +1,10 @@
 <?php
 
-require_once __DIR__.'/vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
+
 use Config\Router;
 use Models\Products;
+
 define('DirName', getcwd());
 
 header("Access-Control-Allow-Origin: *");
@@ -23,33 +25,44 @@ $router = new Router();
 
 // BASIC REQUIRED OPERATIONS
 
-//$router->get('/getAllProducts', $products->get_all_products());
-$router->get('/getAllProducts', Products::class . '::get_all_products');
-$router->post('/addProduct', Products::class . '::add_new_product');
-$router->post('/deleteProducts', Products::class . '::delete_products');
-//$router->get('/getProduct', Products::class . '::get_product');
+//$router->get('/getAllProducts', $products->getAllProducts());
+$router->get('/getAllProducts',
+  Products::class . '::getAllProducts');
 
-// $router->get('/getAllProductProperties', Products::class . '::get_all_product_properties');
+$router->post('/addProduct',
+  Products::class . '::addNewProduct');
 
+$router->delete('/deleteProducts',
+ Products::class . '::deleteProducts');
+//$router->get('/getProduct', Products::class . '::getProduct');
+
+// $router->get('/getAllProductProperties', Products::class . '::getAllProductProperties');
 
 
 // APPLICATION DATA, TYPES WITH THEIR PROPERTIES
-$router->get('/getApplicationData', Products::class . '::get_types_data');
+$router->get('/getApplicationData',
+  Products::class . '::getTypesData');
 
 
 // ADDITIONAL OPERATIONS FOR SCALABILITY
 // PRODUCT TYPE OPERATIONS
-$router->get('/getAllProductTypes', Products::class . '::get_all_product_types');
-$router->post('/addProductType', Products::class . '::add_new_product_type');
+$router->get('/getAllProductTypes',
+  Products::class . '::getAllProductTypes');
+$router->post('/addProductType',
+  Products::class . '::addNewProductType');
 
 
 // PRODUCT PROPERTY OPERATIONS
-$router->get('/getAllTypeProperties', Products::class . '::get_all_type_properties');
-$router->post('/addTypeProperty', Products::class . '::add_type_property');
+$router->get('/getAllTypeProperties',
+  Products::class . '::getAllTypeProperties');
+
+
+$router->post('/addTypeProperty',
+  Products::class . '::addTypeProperty');
 
 
 $router->addNotFoundHandler('/', function () {
-    echo 'Home lol';
+  echo 'Home lol';
 });
 
 $router->run();

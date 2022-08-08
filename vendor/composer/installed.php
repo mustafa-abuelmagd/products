@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '6afdc76b1754058e66fb2124964ce1ed32718acc',
+        'reference' => '649cc770d2a0d719630c994c5b673eb5688882a6',
         'name' => 'mustafa/products',
         'dev' => true,
     ),
@@ -25,7 +25,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '6afdc76b1754058e66fb2124964ce1ed32718acc',
+            'reference' => '649cc770d2a0d719630c994c5b673eb5688882a6',
             'dev_requirement' => false,
         ),
         'phpoption/phpoption' => array(
@@ -36,6 +36,15 @@
             'aliases' => array(),
             'reference' => 'eab7a0df01fe2344d172bff4cd6dbd3f8b84ad15',
             'dev_requirement' => false,
+        ),
+        'squizlabs/php_codesniffer' => array(
+            'pretty_version' => '3.7.1',
+            'version' => '3.7.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../squizlabs/php_codesniffer',
+            'aliases' => array(),
+            'reference' => '1359e176e9307e906dc3d890bcc9603ff6d90619',
+            'dev_requirement' => true,
         ),
         'symfony/polyfill-ctype' => array(
             'pretty_version' => 'v1.26.0',

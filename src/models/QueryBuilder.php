@@ -1,14 +1,13 @@
 <?php
 
 namespace Models;
-require_once __DIR__ . '/../config/Database.php';
+
 use Config\Database;
 use mysqli_sql_exception;
 use PDO;
 
 abstract class QueryBuilder
 {
-
     public PDO $conn;
     public string $table = '';
     public string $query = '';
@@ -21,7 +20,6 @@ abstract class QueryBuilder
         $database = (new Database())->connect();
         $this->conn = $database;
         $this->table = $table_name;
-
     }
 
 
@@ -46,25 +44,34 @@ abstract class QueryBuilder
 
     public function insert(string $in): static
     {
-        $this->query = 'INSERT INTO ' . $in . ' SET sku = :SKU , name = :name , price = :price , type = :type  ';
+        $this->query =
+        'INSERT INTO ' . $in . ' SET sku = :SKU , name = :name , price = :price , type = :type  ';
+
         return $this;
     }
 
-    public function general_insert(string $in): static
+    public function generalInsert(string $in): static
     {
-        $this->query = 'INSERT INTO ' . $in . ' SET type_name = :type_name , `separator` = :separator ';
+        $this->query =
+        'INSERT INTO ' . $in . ' SET type_name = :type_name , `separator` = :separator ';
+
         return $this;
     }
 
-    public function insert_type_property(string $in): static
+    public function insertTypeProperty(string $in): static
     {
-        $this->query = 'INSERT INTO ' . $in . ' SET  property = :property , unit = :unit , type_id = :type_id ';
+        $this->query =
+        'INSERT INTO ' . $in . ' SET  property = :property , unit = :unit , type_id = :type_id ';
+
         return $this;
     }
 
-    public function insert_product_property(string $in): static
+    public function insertProductProperty(string $in): static
     {
-        $this->query = 'INSERT INTO ' . $in . ' SET  product_id = :product_id , type_id = :type_id  , property_id = :property_id , value = :value';
+        $this->query =
+        'INSERT INTO ' . $in . ' SET  product_id = :product_id ,
+          type_id = :type_id  , property_id = :property_id , value = :value';
+
         return $this;
     }
 
@@ -102,7 +109,6 @@ abstract class QueryBuilder
                 return false;
             }
         } catch (mysqli_sql_exception $e) {
-
             throw new mysqli_sql_exception($e);
         }
     }
@@ -114,17 +120,14 @@ abstract class QueryBuilder
         if (!$this->stmt->execute()) {
             return null;
         } else {
-
             return $this->stmt;
         }
     }
 
     public function get(): void
     {
-
-        echo $this->bind()->fetchAll(PDO::FETCH_ASSOC);
-
-
+        echo $this->bind()
+        ->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function delete(string $from, string $col, string $val): bool|PDOStatement|null
@@ -133,8 +136,4 @@ abstract class QueryBuilder
         $this->where($col, '=', $val);
         return $this->bind();
     }
-
-
 }
-
-

@@ -1,11 +1,9 @@
 <?php
 
-//namespace Utils;
-require_once __DIR__ . '/../../vendor/autoload.php';
 
 function getStatusCodeMessage($status): string
 {
-    $codes = Array(
+    $codes = array(
         100 => 'Continue',
         101 => 'Switching Protocols',
         200 => 'OK',
