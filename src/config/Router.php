@@ -4,12 +4,13 @@ namespace Config;
 
 class Router
 {
-    private array $handlers = array();
     private const METHOD_POST = 'POST';
     private const METHOD_GET = 'GET';
     private const METHOD_DELETE = 'DELETE';
+    private $handlers = array();
 
-    private $notFoundHandler;
+
+  private $notFoundHandler;
 
 
     public function get(string $path, $handler): void
@@ -55,6 +56,7 @@ class Router
             if ($handler['path'] === $requestPath &&
             $method === $handler['method']) {
                 $callback = $handler['handler'];
+              echo "callback  $callback";
             }
         }
 
